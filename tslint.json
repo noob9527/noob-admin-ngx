@@ -10,8 +10,8 @@
       true,
       "check-space"
     ],
-    "curly": true,
-    "eofline": true,
+    "curly": false,
+    "eofline": false,
     "forin": true,
     "import-blacklist": [
       true,
