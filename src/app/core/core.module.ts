@@ -1,7 +1,9 @@
 import { NaCoreModule } from './naCore/naCore.module';
+import { provideRoutes } from '@angular/router';
+import { environment } from '../../environments/environment';
 import { CoreUtilsModule } from './coreUtils/coreUtils.module';
-import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { Injector, NgModule, NgModuleFactory, SystemJsNgModuleLoader } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 /**
@@ -23,5 +25,26 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
   exports: [
   ],
   declarations: [],
+  providers: [
+    SystemJsNgModuleLoader,
+    provideRoutes([
+      {
+        path: 'LAZY/development',
+        loadChildren: './development/development.module#DevelopmentModule'
+      },
+    ]),
+  ],
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(
+    private loader: SystemJsNgModuleLoader,
+    private injector: Injector,
+  ) {
+    if (!environment.production) {
+      this.loader.load('./development/development.module#DevelopmentModule')
+        .then((factory: NgModuleFactory<any>) => {
+          factory.create(this.injector);
+        });
+    }
+  }
+}

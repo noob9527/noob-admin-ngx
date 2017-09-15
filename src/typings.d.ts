@@ -38,7 +38,4 @@ interface NodeModule {
  *
  */
 
-declare namespace mockjs {
-    function makeGreeting(s: string): string;
-    let numberOfGreetings: number;
-}
+declare module 'mockjs';

@@ -1,3 +1,4 @@
+import { LoggerModule } from './logger/logger.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BaseUrlInterceptor } from './baseUrl.interceptor';
@@ -7,6 +8,7 @@ import { BaseUrlInterceptor } from './baseUrl.interceptor';
  */
 @NgModule({
   imports: [
+    LoggerModule,
   ],
   declarations: [],
   providers: [
