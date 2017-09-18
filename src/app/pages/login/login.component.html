@@ -1,19 +1,61 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-  <label for="username">username</label>
-  <input
-    name="username"
-    placeholder="username"
-    type="test"
-    id="username"
-    [formControlName]="'username'"
-  >
-  <label for="password">password</label>
-  <input
-    name="password"
-    placeholder="password"
-    type="test"
-    id="password"
-    [formControlName]="'password'"
-  >
-  <button type="submit">submit</button>
-</form>
+<div class="login-page">
+  <div class="login-panel">
+    <div class="logo">
+      <img src="assets/image/logo.png" alt="logo">
+      <span>antd admin</span>
+    </div>
+    <form nz-form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+    class="login-form"
+    >
+      <div nz-form-item>
+        <div
+          nz-form-control
+          [nzValidateStatus]="username"
+          nzHasFeedback
+        >
+          <nz-input
+            formControlName="username"
+            [nzPlaceHolder]="'username'"
+            [nzSize]="'large'"
+          >
+            <ng-template #prefix>
+              <i class="anticon anticon-user"></i>
+            </ng-template>
+          </nz-input>
+          <div nz-form-explain *ngIf="username.dirty&&username.hasError('required')">Please input your username!</div>
+        </div>
+      </div>
+      <div nz-form-item>
+        <div
+          nz-form-control
+          [nzValidateStatus]="password"
+          nzHasFeedback
+        >
+          <nz-input
+            formControlName="password"
+            [nzPlaceHolder]="'password'"
+            [nzSize]="'large'"
+          >
+            <ng-template #prefix>
+              <i class="anticon anticon-lock"></i>
+            </ng-template>
+          </nz-input>
+          <div nz-form-explain *ngIf="password.dirty&&password.hasError('required')">Please input your password!</div>
+        </div>
+      </div>
+      <div nz-form-control>
+        <button
+          nz-button
+          class="login-form-button"
+          [nzType]="'primary'"
+          [nzSize]="'large'"
+          [disabled]="!form.valid"
+          >
+          Log in
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

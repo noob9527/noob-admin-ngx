@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService, Credential } from '../../core/naCore/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
@@ -17,20 +17,27 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
   ) {
     this.form = fb.group({
-      username: [null],
-      password: [null],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
     });
+
   }
 
   ngOnInit() {
   }
 
   onSubmit(credential: Credential) {
-    console.log(credential);
     this.authenticationService.login(credential)
       .subscribe(res => {
         if (res) this.router.navigate(['/']);
       });
   }
 
+  get username() {
+    return this.form.controls.username;
+  }
+
+  get password() {
+    return this.form.controls.password;
+  }
 }
