@@ -1,0 +1,42 @@
+@import '../../../../assets/theme/index.scss';
+
+.logo {
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  cursor: pointer;
+  margin: 28px 0;
+  transition: $transition-ease-out;
+  overflow: hidden;
+
+  img {
+    width: 60px;
+    transition: $transition-ease-out;
+  }
+
+  span {
+    vertical-align: text-bottom;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+}
+
+:host-context(.ant-layout-sider-collapsed) ::ng-deep {
+  .anticon {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .ant-menu-submenu-title:after {
+    display: none;
+  }
+
+  .logo {
+    height: 50px;
+    img {
+      width: 50px;
+      margin: auto;
+    }
+  }
+}

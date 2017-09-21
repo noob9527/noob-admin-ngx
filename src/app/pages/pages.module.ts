@@ -1,19 +1,19 @@
+import { SharedModule } from '../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared/shared.module';
-
-import { routes } from './pages.routing';
-
+import { CoreModule } from '../core/core.module';
 import { PagesComponent } from './pages.component';
+import { routes } from './pages.routing';
 
 @NgModule({
   declarations: [
     PagesComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),
+    CoreModule,
     SharedModule,
+    RouterModule.forChild(routes),
   ],
 })
 export class PagesModule {

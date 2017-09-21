@@ -6,7 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --sourcemaps=false",
+    "test:sourcemaps": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -23,7 +24,7 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "mockjs": "^1.0.1-beta3",
-    "ng-zorro-antd": "^0.5.0-rc.4",
+    "ng-zorro-antd": "^0.5.2",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

@@ -1,9 +1,13 @@
-import { NaCoreModule } from './naCore/naCore.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { HttpClientModule } from '@angular/common/http';
+import { Injector, NgModule, NgModuleFactory, SystemJsNgModuleLoader } from '@angular/core';
 import { provideRoutes } from '@angular/router';
+
 import { environment } from '../../environments/environment';
 import { CoreUtilsModule } from './coreUtils/coreUtils.module';
-import { Injector, NgModule, NgModuleFactory, SystemJsNgModuleLoader } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { NaCoreModule } from './naCore/naCore.module';
+import { NaCoreWidgetModule } from './naCoreWidget/naCoreWidget.module';
 
 
 /**
@@ -21,10 +25,13 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     HttpClientModule,
     CoreUtilsModule,
     NaCoreModule,
+    NaCoreWidgetModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule.forRoot(),
   ],
   exports: [
+    NaCoreWidgetModule,
   ],
-  declarations: [],
   providers: [
     SystemJsNgModuleLoader,
     provideRoutes([
@@ -40,6 +47,7 @@ export class CoreModule {
     private loader: SystemJsNgModuleLoader,
     private injector: Injector,
   ) {
+    // 如果不是生产环境，加载 development 模块
     if (!environment.production) {
       this.loader.load('./development/development.module#DevelopmentModule')
         .then((factory: NgModuleFactory<any>) => {

@@ -3387,9 +3387,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng-zorro-antd@^0.5.0-rc.4:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-0.5.0.tgz#3999d3d525f1f77e9aca184ad896d82746387a12"
+ng-zorro-antd@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-0.5.2.tgz#1a6bc1022401045f255a4efc953d7e92cb276135"
   dependencies:
     "@angular/cdk" "2.0.0-beta.8"
     moment "^2.18.1"

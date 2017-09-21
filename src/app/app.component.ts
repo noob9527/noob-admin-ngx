@@ -1,3 +1,5 @@
+import { environment } from '../environments/environment';
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,9 +7,16 @@ import { Component } from '@angular/core';
   template: `
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  constructor(private titleService: Title) {
+    let { appName } = environment;
+    if (!appName) appName = 'noob admin';
+    this.setTitle(appName.toUpperCase());
+  }
+
+  setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 }
 

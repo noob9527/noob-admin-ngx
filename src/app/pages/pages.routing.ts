@@ -11,8 +11,9 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'about', loadChildren: './about/about.module#AboutModule' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+      { path: 'about', loadChildren: './about/about.module#AboutModule' },
+      { path: 'level', loadChildren: './level/level.module#LevelModule' },
     ]
   },
 ];
