@@ -20,8 +20,8 @@ import menuItems from './pages.menu';
         </i>
         </nz-header>
         <nz-content>
+          <app-na-content-top></app-na-content-top>
           <div class="main">
-            <app-na-content-top></app-na-content-top>
             <router-outlet></router-outlet>
           </div>
         </nz-content>
@@ -44,6 +44,9 @@ import menuItems from './pages.menu';
         padding: 0 16px;
         cursor: pointer;
         transition: color .3s;
+      }
+      .main {
+        margin: 24px;
       }
     `
   ]

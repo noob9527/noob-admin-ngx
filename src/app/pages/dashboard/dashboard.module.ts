@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,7 +10,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild(routes),
   ],
   declarations: [DashboardComponent]

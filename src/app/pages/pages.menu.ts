@@ -4,7 +4,7 @@ const menuItems: MenuItemMeta[] = [
   {
     path: 'dashboard',
     title: 'dashboard',
-    icon: 'anticon anticon-laptop',
+    icon: 'anticon anticon-home',
     order: 0,
   },
   {

@@ -38,7 +38,9 @@ export class ActivatedRouteStub {
 
   // ActivatedRoute.params is Observable
   private subject = new BehaviorSubject(this.testParams);
+
   params = this.subject.asObservable();
+  root = { children: <any[]>[] };
 
   // Test parameters
   private _testParams: {};

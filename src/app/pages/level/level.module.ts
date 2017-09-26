@@ -8,13 +8,34 @@ import { Level2to2Component } from './level2/level2to2/level2to2.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'level1' },
-  { path: 'level1', component: Level1Component },
+  {
+    path: 'level1',
+    component: Level1Component,
+    data: {
+      breadcrumb: 'level1',
+    },
+  },
   {
     path: 'level2',
     component: Level2Component,
+    data: {
+      breadcrumb: 'level2',
+    },
     children: [
-      { path: 'level2to1', component: Level2to1Component },
-      { path: 'level2to2', component: Level2to2Component },
+      {
+        path: 'level2to1',
+        component: Level2to1Component,
+        data: {
+          breadcrumb: 'level2to1',
+        },
+      },
+      {
+        path: 'level2to2',
+        component: Level2to2Component,
+        data: {
+          breadcrumb: 'level2to2',
+        },
+      },
     ]
   },
 ];
