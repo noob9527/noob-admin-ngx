@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
+    <ng-progress [color]="'#29d'" [showSpinner]="false"></ng-progress>
     <router-outlet></router-outlet>
   `,
 })

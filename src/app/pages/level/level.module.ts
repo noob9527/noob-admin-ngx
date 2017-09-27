@@ -12,28 +12,28 @@ const routes: Routes = [
     path: 'level1',
     component: Level1Component,
     data: {
-      breadcrumb: 'level1',
+      breadcrumb: 'Level1',
     },
   },
   {
     path: 'level2',
     component: Level2Component,
     data: {
-      breadcrumb: 'level2',
+      breadcrumb: 'Level2',
     },
     children: [
       {
         path: 'level2to1',
         component: Level2to1Component,
         data: {
-          breadcrumb: 'level2to1',
+          breadcrumb: 'Level2to1',
         },
       },
       {
         path: 'level2to2',
         component: Level2to2Component,
         data: {
-          breadcrumb: 'level2to2',
+          breadcrumb: 'Level2to2',
         },
       },
     ]

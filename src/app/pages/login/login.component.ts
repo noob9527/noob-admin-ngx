@@ -1,6 +1,7 @@
+import { environment } from '../../../environments/environment';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService, Credential } from '../../core/naCore/authentication/authentication.service';
+import { AuthenticationService, Credential } from '../../core/na-core/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  appName = environment.appName;
   form: FormGroup;
 
   constructor(

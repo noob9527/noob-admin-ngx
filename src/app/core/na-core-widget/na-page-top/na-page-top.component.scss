@@ -1,0 +1,29 @@
+:host nz-header {
+  background-color: #fff;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul[nz-menu] {
+    line-height: 64px;
+
+    span[title] {
+      display: flex;
+      height: 64px;
+      align-items: center;
+    }
+
+    nz-avatar::ng-deep i {
+      margin-right: 0;
+    }
+  }
+
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+}

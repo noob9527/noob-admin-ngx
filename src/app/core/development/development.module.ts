@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { FakeBackendModule } from './fakeBackend/fakeBackend.module';
+import { FakeBackendModule } from './fake-backend/fake-backend.module';
 
 @NgModule({
   imports: [

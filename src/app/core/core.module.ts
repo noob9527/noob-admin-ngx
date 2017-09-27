@@ -1,13 +1,13 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Injector, NgModule, NgModuleFactory, SystemJsNgModuleLoader } from '@angular/core';
 import { provideRoutes } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import { CoreUtilsModule } from './coreUtils/coreUtils.module';
-import { NaCoreModule } from './naCore/naCore.module';
-import { NaCoreWidgetModule } from './naCoreWidget/naCoreWidget.module';
+import { CoreUtilsModule } from './core-utils/core-utils.module';
+import { NaCoreModule } from './na-core/na-core.module';
+import { NaCoreWidgetModule } from './na-core-widget/na-core-widget.module';
 
 
 /**

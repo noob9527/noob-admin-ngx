@@ -1,14 +1,11 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
-
-const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
-];
 
 @NgModule({
   declarations: [
@@ -16,11 +13,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     PagesModule,
+    NgProgressModule,
   ],
   providers: [
     Title,
+    // loading bar interceptor
+    { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

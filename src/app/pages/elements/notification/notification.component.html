@@ -1,0 +1,120 @@
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Message</ng-template>
+          <ng-template #body>
+              <div nz-form>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label nz-form-item-required>Type</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-radio-group [(ngModel)]="message.type">
+                              <label nz-radio-button [nzValue]="'info'">
+                                  <span>Normal</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'success'">
+                                  <span>Success</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'error'">
+                                  <span>Error</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'warning'">
+                                  <span>Warning</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'loading'">
+                                  <span>Loading</span>
+                              </label>
+                          </nz-radio-group>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label for="messageContent" nz-form-item-required>Content</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-input [nzSize]="'large'" [(ngModel)]="message.content" [nzId]="'messageContent'"></nz-input>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label for="messageDuration" nz-form-item-required>Duration</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-slider [(ngModel)]="message.duration" [nzMin]="0" [nzMax]="10" [nzMarks]="marks"></nz-slider>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="6">
+                          <button nz-button (click)="createMessage()" [nzType]="'primary'">Show</button>
+                          <button nz-button (click)="clearMessage()">Clear</button>
+                      </div>
+                  </div>
+              </div>
+          </ng-template>
+      </nz-card>
+  </div>
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Notification</ng-template>
+          <ng-template #body>
+              <div nz-form>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label nz-form-item-required>Type</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-radio-group [(ngModel)]="notify.type">
+                              <label nz-radio-button [nzValue]="'info'">
+                                  <span>Normal</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'success'">
+                                  <span>Success</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'error'">
+                                  <span>Error</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'warning'">
+                                  <span>Warning</span>
+                              </label>
+                              <label nz-radio-button [nzValue]="'blank'">
+                                  <span>Blank</span>
+                              </label>
+                          </nz-radio-group>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label for="notifyTitle" nz-form-item-required>Title</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-input [nzSize]="'large'" [(ngModel)]="notify.title" [nzId]="'notifyTitle'"></nz-input>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label for="notifyContent" nz-form-item-required>Content</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-input [nzSize]="'large'" [(ngModel)]="notify.content" [nzId]="'notifyContent'"></nz-input>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-label nz-col [nzSm]="6">
+                          <label for="notifyDuration" nz-form-item-required>Duration</label>
+                      </div>
+                      <div nz-form-control nz-col [nzSm]="18">
+                          <nz-slider [(ngModel)]="notify.duration" [nzMin]="0" [nzMax]="10" [nzMarks]="marks"></nz-slider>
+                      </div>
+                  </div>
+                  <div nz-form-item nz-row>
+                      <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="6">
+                          <button nz-button (click)="createNotify()" [nzType]="'primary'">Show</button>
+                          <button nz-button (click)="clearNotify()">Clear</button>
+                      </div>
+                  </div>
+              </div>
+          </ng-template>
+      </nz-card>
+  </div>
+</div>

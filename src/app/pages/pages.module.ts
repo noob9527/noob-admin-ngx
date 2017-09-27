@@ -1,4 +1,4 @@
-import { NaBreadcrumbService } from '../core/naCoreWidget/naBreadcrumb/naBreadcrumb.service';
+import { NaBreadcrumbService } from '../core/na-core-widget/na-breadcrumb/na-breadcrumb.service';
 import { SharedModule } from '../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -14,13 +14,16 @@ import { routes } from './pages.routing';
   imports: [
     CoreModule,
     SharedModule,
-    RouterModule.forChild(routes),
+    RouterModule.forRoot(routes),
+  ],
+  exports: [
+    RouterModule,
   ],
 })
 export class PagesModule {
   constructor(naBreadcrumbService: NaBreadcrumbService) {
     naBreadcrumbService.setPrefixBreadcrumbs([{
-      label: 'dashboard',
+      label: 'Dashboard',
       url: '/',
     }]);
   }

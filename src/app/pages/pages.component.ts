@@ -1,4 +1,4 @@
-import { NaMenuService } from '../core/naCoreWidget/naSidebar/naMenu.service';
+import { NaMenuService } from '../core/na-core-widget/na-sidebar/na-menu.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import menuItems from './pages.menu';
@@ -11,14 +11,7 @@ import menuItems from './pages.menu';
         <app-na-sidebar [isCollapsed]="isCollapsed"></app-na-sidebar>
       </nz-sider>
       <nz-layout>
-        <nz-header>
-        <i
-          class="anticon trigger"
-          [class.anticon-menu-fold]="!isCollapsed"
-          [class.anticon-menu-unfold]="isCollapsed"
-          (click)="isCollapsed=!isCollapsed">
-        </i>
-        </nz-header>
+        <app-na-page-top [(isCollapsed)]="isCollapsed"></app-na-page-top>
         <nz-content>
           <app-na-content-top></app-na-content-top>
           <div class="main">
@@ -29,27 +22,14 @@ import menuItems from './pages.menu';
       </nz-layout>
     </nz-layout>
     `,
-  styles: [
-    `
-      :host > nz-layout {
-        height: 100%;
-      }
-      nz-layout > nz-header {
-        background-color: #fff;
-        padding: 0;
-      }
-      .trigger {
-        font-size: 18px;
-        line-height: 64px;
-        padding: 0 16px;
-        cursor: pointer;
-        transition: color .3s;
-      }
-      .main {
-        margin: 24px;
-      }
-    `
-  ]
+  styles: [`
+    :host > nz-layout {
+       height: 100%;
+    }
+    .main {
+      margin: 24px;
+    }
+  `],
 })
 export class PagesComponent implements OnInit {
 

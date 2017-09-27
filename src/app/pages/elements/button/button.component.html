@@ -1,0 +1,226 @@
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Type</ng-template>
+          <ng-template #body>
+              <button nz-button [nzType]="'primary'" [disabled]="disabled">
+                <span>Primary</span>
+              </button>
+              <button nz-button [nzType]="'default'" [disabled]="disabled">
+                <span>Default</span>
+              </button>
+              <button nz-button [nzType]="'dashed'" [disabled]="disabled">
+                <span>Dashed</span>
+              </button>
+              <button nz-button [nzType]="'danger'" [disabled]="disabled">
+                <span>Danger</span>
+              </button>
+              <button nz-button [nzType]="'dashed'" (click)="toggleDisabled()">
+                <span>Toggle disabled</span>
+              </button>
+          </ng-template>
+      </nz-card>
+  </div>
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Icon</ng-template>
+          <ng-template #body>
+              <button nz-button [nzType]="'primary'" [nzShape]="'circle'" [disabled]="disabled">
+                <i class="anticon anticon-search"></i>
+              </button>
+              <button nz-button [nzType]="'primary'" [disabled]="disabled">
+                <i class="anticon anticon-search"></i><span>Search</span>
+              </button>
+              <button nz-button [nzType]="'dashed'" [nzShape]="'circle'" [disabled]="disabled">
+                <i class="anticon anticon-search"></i>
+              </button>
+              <button nz-button [nzType]="'default'" [disabled]="disabled">
+                <i class="anticon anticon-search"></i><span>Search</span>
+              </button>
+          </ng-template>
+      </nz-card>
+  </div>
+</div>
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Size</ng-template>
+          <ng-template #body>
+              <nz-radio-group [(ngModel)]="size">
+                  <label nz-radio-button [nzValue]="'large'"><span>Large</span></label>
+                  <label nz-radio-button [nzValue]="'default'"><span>Default</span></label>
+                  <label nz-radio-button [nzValue]="'small'"><span>Small</span></label>
+              </nz-radio-group>
+              <div>
+                  <button nz-button [nzType]="'primary'" [nzSize]="size" [nzShape]="'circle'">
+                      <i class="anticon anticon-download"></i>
+                  </button>
+                  <button nz-button [nzType]="'primary'" [nzSize]="size">
+                      <i class="anticon anticon-download"></i><span>Download</span>
+                  </button>
+                  <button nz-button [nzType]="'primary'" [nzSize]="size">
+                      <span>Normal</span>
+                  </button>
+              </div>
+              <nz-button-group [nzSize]="size">
+                  <button nz-button [nzType]="'primary'">
+                      <i class="anticon anticon-left"></i><span>Backward</span>
+                  </button>
+                  <button nz-button [nzType]="'primary'">
+                      <span>Forward</span><i class="anticon anticon-right"></i>
+                  </button>
+              </nz-button-group>
+          </ng-template>
+      </nz-card>
+  </div>
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Loading</ng-template>
+          <ng-template #body>
+              <div>
+                  <button nz-button [nzType]="'primary'" [nzLoading]="loading">
+                      <span><i class="anticon anticon-poweroff"></i> Loading</span>
+                  </button>
+                  <button nz-button [nzType]="'primary'" [nzSize]="'small'" [nzLoading]="loading">
+                      <span>Loading</span>
+                  </button>
+                  <button nz-button [nzType]="'dashed'" (click)="toggleLoading()">
+                      <span>Toggle Loading</span>
+                  </button>
+              </div>
+              <div>
+                  <button nz-button [nzType]="'primary'" [nzLoading]="loading">
+                      <span>Click me!</span>
+                  </button>
+                  <button nz-button [nzType]="'primary'" [nzLoading]="loading">
+                      <i class="anticon anticon-poweroff"></i>
+                      <span>Click me!</span>
+                  </button>
+              </div>
+              <button nz-button [nzLoading]="true" [nzShape]="'circle'"></button>
+              <button nz-button [nzLoading]="true" [nzShape]="'circle'" [nzType]="'primary'"></button>
+          </ng-template>
+      </nz-card>
+  </div>
+</div>
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Multiple Buttons</ng-template>
+          <ng-template #body>
+              <button nz-button [nzType]="'primary'">
+                  <span>primary</span>
+              </button>
+              <button nz-button [nzType]="'default'">
+                  <span>secondary</span>
+              </button>
+              <nz-dropdown>
+                  <button nz-button nz-dropdown><span>more</span> <i class="anticon anticon-down"></i></button>
+                  <ul nz-menu>
+                      <li nz-menu-item>
+                          <a>1st item</a>
+                      </li>
+                      <li nz-menu-item>
+                          <a>2nd item</a>
+                      </li>
+                      <li nz-menu-item>
+                          <a>3rd item</a>
+                      </li>
+                  </ul>
+              </nz-dropdown>
+          </ng-template>
+      </nz-card>
+  </div>
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Ghost Button</ng-template>
+          <ng-template #body>
+              <div class="bg-grey p-lg">
+                  <button nz-button [nzType]="'primary'" [nzGhost]="true">
+                      <span>Primary</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" [nzGhost]="true">
+                      <span>Default</span>
+                  </button>
+                  <button nz-button [nzType]="'dashed'" [nzGhost]="true">
+                      <span>Dashed</span>
+                  </button>
+                  <button nz-button [nzType]="'danger'" [nzGhost]="true">
+                      <span>Danger</span>
+                  </button>
+              </div>
+          </ng-template>
+      </nz-card>
+  </div>
+</div>
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Button Group</ng-template>
+          <ng-template #body>
+              <h4>Basic</h4>
+              <nz-button-group>
+                  <button nz-button>Cancel</button>
+                  <button nz-button [nzType]="'primary'">OK</button>
+              </nz-button-group>
+              <nz-button-group>
+                  <button nz-button [nzType]="'default'" disabled>
+                      <span>L</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" disabled>
+                      <span>M</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" disabled>
+                      <span>R</span>
+                  </button>
+              </nz-button-group>
+              <nz-button-group>
+                  <button nz-button [nzType]="'primary'" disabled>
+                      <span>L</span>
+                  </button>
+                  <button nz-button [nzType]="'default'" disabled>
+                      <span>M</span>
+                  </button>
+                  <button nz-button [nzType]="'default'">
+                      <span>M</span>
+                  </button>
+                  <button nz-button [nzType]="'dashed'" disabled>
+                      <span>R</span>
+                  </button>
+              </nz-button-group>
+              <h4>With Icon</h4>
+              <nz-button-group>
+                  <button nz-button [nzType]="'primary'">
+                      <i class=" anticon anticon-left"></i>
+                      <span>Go back</span>
+                  </button>
+                  <button nz-button [nzType]="'primary'">
+                      <span>Go forward</span>
+                      <i class=" anticon anticon-right"></i>
+                  </button>
+              </nz-button-group>
+              <nz-button-group>
+                  <button nz-button [nzType]="'primary'">
+                      <i class=" anticon anticon-cloud"></i>
+                  </button>
+                  <button nz-button [nzType]="'primary'">
+                      <i class=" anticon anticon-cloud-download"></i>
+                  </button>
+              </nz-button-group>
+              <h4>Size</h4>
+              <nz-button-group [nzSize]="'large'">
+                  <button nz-button>Large</button>
+                  <button nz-button>Large</button>
+              </nz-button-group>
+              <nz-button-group>
+                  <button nz-button>Default</button>
+                  <button nz-button>Default</button>
+              </nz-button-group>
+              <nz-button-group [nzSize]="'small'">
+                  <button nz-button>Small</button>
+                  <button nz-button>Small</button>
+              </nz-button-group>
+          </ng-template>
+      </nz-card>
+  </div>
+</div>
