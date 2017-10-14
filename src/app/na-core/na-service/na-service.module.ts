@@ -10,4 +10,4 @@ import { NgModule } from '@angular/core';
   ],
   declarations: []
 })
-export class NaCoreModule { }
+export class NaServiceModule { }

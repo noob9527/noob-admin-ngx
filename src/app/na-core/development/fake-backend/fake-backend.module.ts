@@ -1,6 +1,6 @@
 import { AuthenticationMock } from './mocks/authentication.mock';
 import { MockService } from './mock.provider';
-import { LoggerService } from '../../core-utils/logger/logger.service';
+import { LoggerService } from '../../na-utils/logger/logger.service';
 import { environment } from '../../../../environments/environment';
 import { Inject, NgModule } from '@angular/core';
 import Mock from 'mockjs';

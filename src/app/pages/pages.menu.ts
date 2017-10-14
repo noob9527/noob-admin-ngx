@@ -1,4 +1,4 @@
-import { MenuItemMeta } from '../core/na-core-widget/na-sidebar/menu-item.model';
+import { MenuItemMeta } from '../na-core/na-widget/na-sidebar/menu-item.model';
 
 const menuItems: MenuItemMeta[] = [
   {

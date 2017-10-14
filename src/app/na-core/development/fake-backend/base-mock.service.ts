@@ -1,4 +1,4 @@
-import { LoggerService } from '../../core-utils/logger/logger.service';
+import { LoggerService } from '../../na-utils/logger/logger.service';
 import { Inject, Injectable } from '@angular/core';
 import { MockService } from './mock.provider';
 

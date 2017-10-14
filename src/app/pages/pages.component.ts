@@ -1,4 +1,4 @@
-import { NaMenuService } from '../core/na-core-widget/na-sidebar/na-menu.service';
+import { NaMenuService } from '../na-core/na-widget/na-sidebar/na-menu.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import menuItems from './pages.menu';

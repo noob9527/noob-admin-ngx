@@ -1,7 +1,7 @@
 import { environment } from '../../../environments/environment';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService, Credential } from '../../core/na-core/authentication/authentication.service';
+import { AuthenticationService, Credential } from '../../na-core/na-service/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

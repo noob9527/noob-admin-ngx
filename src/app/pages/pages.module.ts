@@ -1,9 +1,9 @@
-import { NaBreadcrumbService } from '../core/na-core-widget/na-breadcrumb/na-breadcrumb.service';
+import { NaBreadcrumbService } from '../na-core/na-widget/na-breadcrumb/na-breadcrumb.service';
 import { SharedModule } from '../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { CoreModule } from '../core/core.module';
+import { NaCoreModule } from '../na-core/na-core.module';
 import { PagesComponent } from './pages.component';
 import { routes } from './pages.routing';
 
@@ -12,7 +12,7 @@ import { routes } from './pages.routing';
     PagesComponent,
   ],
   imports: [
-    CoreModule,
+    NaCoreModule,
     SharedModule,
     RouterModule.forRoot(routes),
   ],

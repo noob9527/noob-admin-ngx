@@ -33,4 +33,4 @@ import { NaPageTopComponent } from './na-page-top/na-page-top.component';
     NaBreadcrumbService,
   ],
 })
-export class NaCoreWidgetModule { }
+export class NaWidgetModule { }

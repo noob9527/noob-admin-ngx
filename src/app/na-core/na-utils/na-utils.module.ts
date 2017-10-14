@@ -19,4 +19,4 @@ import { BaseUrlInterceptor } from './base-url.interceptor';
     }
   ],
 })
-export class CoreUtilsModule { }
+export class NaUtilsModule { }

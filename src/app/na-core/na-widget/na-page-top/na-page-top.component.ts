@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../na-core/authentication/authentication.service';
+import { AuthenticationService } from '../../na-service/authentication/authentication.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({

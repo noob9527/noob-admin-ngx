@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { AuthGuard } from '../core/na-core/authentication/auth.guard';
+import { AuthGuard } from '../na-core/na-service/authentication/auth.guard';
 import { PagesComponent } from './pages.component';
 
 export const routes: Routes = [

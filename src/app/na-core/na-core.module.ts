@@ -5,9 +5,9 @@ import { Injector, NgModule, NgModuleFactory, SystemJsNgModuleLoader } from '@an
 import { provideRoutes } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import { CoreUtilsModule } from './core-utils/core-utils.module';
-import { NaCoreModule } from './na-core/na-core.module';
-import { NaCoreWidgetModule } from './na-core-widget/na-core-widget.module';
+import { NaUtilsModule } from './na-utils/na-utils.module';
+import { NaServiceModule } from './na-service/na-service.module';
+import { NaWidgetModule } from './na-widget/na-widget.module';
 
 
 /**
@@ -23,14 +23,14 @@ import { NaCoreWidgetModule } from './na-core-widget/na-core-widget.module';
 @NgModule({
   imports: [
     HttpClientModule,
-    CoreUtilsModule,
-    NaCoreModule,
-    NaCoreWidgetModule,
+    NaUtilsModule,
+    NaServiceModule,
+    NaWidgetModule,
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
   ],
   exports: [
-    NaCoreWidgetModule,
+    NaWidgetModule,
   ],
   providers: [
     SystemJsNgModuleLoader,
@@ -42,7 +42,7 @@ import { NaCoreWidgetModule } from './na-core-widget/na-core-widget.module';
     ]),
   ],
 })
-export class CoreModule {
+export class NaCoreModule {
   constructor(
     private loader: SystemJsNgModuleLoader,
     private injector: Injector,
