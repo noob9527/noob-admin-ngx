@@ -2,6 +2,14 @@ export enum ItemType {
   ParentRoute, Route, Url,
 }
 
+export interface MenuItemData {
+    permissions?: {
+      only?: string | string[],
+      except?: string | string[],
+    };
+    [index: string]: any;
+}
+
 export interface MenuItemMeta {
   path?: string;
   url?: string;
@@ -10,6 +18,7 @@ export interface MenuItemMeta {
   title: string;
   icon?: string;
   order?: number;
+  data?: MenuItemData;
   [index: string]: any;
 }
 
@@ -23,6 +32,7 @@ export class MenuItem implements MenuItemMeta {
   title: string;
   icon?: string;
   order?: number;
+  data?: MenuItemData;
   [index: string]: any;
 
   constructor(meta: MenuItemMeta) {

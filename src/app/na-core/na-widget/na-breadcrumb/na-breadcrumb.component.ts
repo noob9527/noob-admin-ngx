@@ -6,7 +6,7 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
 
 
 @Component({
-  selector: 'app-na-breadcrumb',
+  selector: 'na-breadcrumb',
   template: `
   <nz-breadcrumb>
     <nz-breadcrumb-item

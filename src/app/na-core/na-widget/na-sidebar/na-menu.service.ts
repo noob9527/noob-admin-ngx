@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NaMenuService {
 
-  private menuItems = new BehaviorSubject<MenuItem[]>([]);
+  menuItems = new BehaviorSubject<MenuItem[]>([]);
 
   constructor() { }
 
@@ -43,10 +43,6 @@ export class NaMenuService {
       item.children = this.convert(item.children, item);
     }
     return item;
-  }
-
-  getMenuItems(): BehaviorSubject<MenuItem[]> {
-    return this.menuItems;
   }
 
 }

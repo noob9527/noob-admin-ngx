@@ -1,3 +1,5 @@
+import { NaAclModule } from './na-acl/na-acl.module';
+import { NaUserModule } from './na-user/na-user.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { NgModule } from '@angular/core';
 
@@ -7,6 +9,8 @@ import { NgModule } from '@angular/core';
 @NgModule({
   imports: [
     AuthenticationModule,
+    NaUserModule,
+    NaAclModule,
   ],
   declarations: []
 })

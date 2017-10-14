@@ -4,13 +4,13 @@ import { MockService } from './mock.provider';
 
 @Injectable()
 export abstract class BaseMockService {
+
+  abstract register(): void;
+
   constructor(
     @Inject(MockService) protected Mock: any,
     protected logger: LoggerService,
   ) {
   }
 
-  register() {
-    this.logger.debug(`${this.constructor.name} register`);
-  }
 }

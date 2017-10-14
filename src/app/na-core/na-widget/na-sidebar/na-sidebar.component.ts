@@ -1,22 +1,28 @@
+import { Component, Input, OnInit } from '@angular/core';
+
 import { environment } from '../../../../environments/environment';
 import { MenuItem } from './menu-item.model';
 import { NaMenuService } from './na-menu.service';
-import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-na-sidebar',
+  selector: 'na-sidebar',
   template: `
     <div class="logo">
       <img src="assets/image/logo.svg" alt="logo">
       <span>{{appName}}</span>
     </div>
     <ul nz-menu [nzMode]="menuMode" [nzTheme]="'dark'">
-      <app-na-sidebar-menu-item
-        [menuItem]="item"
-        [isCollapsed]="isCollapsed"
+      <ng-template
         *ngFor="let item of menuItems"
+        [ngxPermissionsOnly]="item.data?.permissions?.only"
+        [ngxPermissionsExcept]="item.data?.permissions?.except"
       >
-      </app-na-sidebar-menu-item>
+        <na-sidebar-menu-item
+          [menuItem]="item"
+          [isCollapsed]="isCollapsed"
+        >
+        </na-sidebar-menu-item>
+      </ng-template>
     </ul>
   `,
   styleUrls: ['./na-sidebar.component.scss'],
@@ -32,12 +38,8 @@ export class NaSidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.naMenuService.getMenuItems()
-      .subscribe(this.updateMenu);
-  }
-
-  updateMenu = (newMenuItems: MenuItem[]) => {
-    this.menuItems = newMenuItems;
+    this.naMenuService.menuItems
+      .subscribe((menuItems: MenuItem[]) => this.menuItems = menuItems);
   }
 
   get menuMode() {

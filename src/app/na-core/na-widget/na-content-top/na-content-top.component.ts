@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-na-content-top',
+  selector: 'na-content-top',
   template: `
   <ng-container>
-    <app-na-breadcrumb></app-na-breadcrumb>
+    <na-breadcrumb></na-breadcrumb>
   </ng-container>
   `,
   styles: [`

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 export interface Credential {
   username: string;
@@ -11,28 +12,29 @@ export interface Credential {
 @Injectable()
 export class AuthenticationService {
 
-  token: string;
+  private token: string;
+
+  isAuthenticated = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    this.token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (token) this.authenticateSuccess(token);
   }
 
   login(credential: Credential): Observable<boolean> {
-    interface Result { token: string; }
-    return this.http.post<Result>('/authenticate', credential)
-      .map(res => {
-        this.token = res.token;
-        localStorage.setItem('token', this.token);
-        return true;
-      });
+    return this.http.post('/authenticate', credential)
+      .do((res: { token: string }) => void this.authenticateSuccess(res.token))
+      .map(_ => true);
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.isAuthenticated.next(false);
   }
 
-  isLogin(): boolean {
-    return !!this.token;
+  private authenticateSuccess(token: string) {
+    this.token = token;
+    localStorage.setItem('token', this.token);
+    this.isAuthenticated.next(true);
   }
-
 }

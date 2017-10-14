@@ -1,9 +1,11 @@
-import { AuthenticationMock } from './mocks/authentication.mock';
-import { MockService } from './mock.provider';
 import { LoggerService } from '../../na-utils/logger/logger.service';
-import { environment } from '../../../../environments/environment';
-import { Inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import Mock from 'mockjs';
+
+import { environment } from '../../../../environments/environment';
+import { MockService } from './mock.provider';
+import { AuthenticationMock } from './mocks/authentication.mock';
+import { CurrentUserMock } from './mocks/current-user.mock';
 
 
 @NgModule({
@@ -15,19 +17,29 @@ import Mock from 'mockjs';
       useValue: Mock,
     },
     AuthenticationMock,
+    CurrentUserMock,
   ],
 })
 export class FakeBackendModule {
   constructor(
     logger: LoggerService,
     authenticationMock: AuthenticationMock,
+    currentUserMock: CurrentUserMock,
   ) {
     if (!environment.mockBackend) return;
-    logger.info('app run with mock backend');
+
+    logger.info('app run with fake backend');
     // 模拟请求延时
     Mock.setup({
       timeout: '500-1000',
     });
-    authenticationMock.register();
+
+    [
+      authenticationMock,
+      currentUserMock,
+    ].forEach(mock => {
+      logger.debug(`${mock.constructor.name} register`);
+      mock.register();
+    });
   }
 }

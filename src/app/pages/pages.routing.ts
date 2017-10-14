@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 import { AuthGuard } from '../na-core/na-service/authentication/auth.guard';
 import { PagesComponent } from './pages.component';
@@ -9,6 +10,7 @@ export const routes: Routes = [
     path: '',
     component: PagesComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [NgxPermissionsGuard],
     children: [
       {
         path: '',
@@ -48,6 +50,13 @@ export const routes: Routes = [
         loadChildren: './charts/charts.module#ChartsModule',
         data: {
           breadcrumb: { label: 'Charts' },
+        },
+      },
+      {
+        path: 'acl',
+        loadChildren: './acl/acl.module#AclModule',
+        data: {
+          breadcrumb: { label: 'Acl' },
         },
       },
       {

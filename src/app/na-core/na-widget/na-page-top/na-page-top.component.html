@@ -8,7 +8,13 @@
     <ul nz-menu [nzMode]="'horizontal'">
       <li nz-submenu>
         <span title>
-          <nz-avatar [nzSize]="'large'" nzIcon="user"></nz-avatar>
+          <nz-avatar
+            [nzSize]="'large'"
+            [nzSrc]="currentUser?.naAvatar"
+            [nzIcon]="'user'"
+            nzText="USER"
+          >
+          </nz-avatar>
         </span>
         <ul>
           <li nz-menu-item (click)="signOut()">sign out</li>

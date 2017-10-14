@@ -29,6 +29,7 @@
     "mockjs": "^1.0.1-beta3",
     "ng-zorro-antd": "^0.5.2",
     "ng2-charts": "^1.6.0",
+    "ngx-permissions": "^2.1.1",
     "ngx-progressbar": "^2.0.8",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

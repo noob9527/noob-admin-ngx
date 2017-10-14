@@ -4,7 +4,7 @@ import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
 
 
 @Component({
-  selector: 'app-na-sidebar-menu-item',
+  selector: 'na-sidebar-menu-item',
   template: `
     <li nz-menu-item *ngIf="!hasSubmenu" [ngSwitch]="menuItem.itemType">
       <a
@@ -35,12 +35,17 @@ import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
         </span>
       </span>
       <ul>
-        <app-na-sidebar-menu-item
-          [menuItem]="item"
-          [isCollapsed]="isCollapsed"
+        <ng-template
           *ngFor="let item of menuItem.children"
+          [ngxPermissionsOnly]="item.data?.permissions?.only"
+          [ngxPermissionsExcept]="item.data?.permissions?.except"
         >
-        </app-na-sidebar-menu-item>
+          <na-sidebar-menu-item
+            [menuItem]="item"
+            [isCollapsed]="isCollapsed"
+          >
+          </na-sidebar-menu-item>
+        </ng-template>
       </ul>
     </li>
   `,
@@ -68,6 +73,10 @@ export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
     return !this.isCollapsed || this.level !== 1;
   }
 
+  /**
+   * fix nested menu issue
+   * @see https://github.com/NG-ZORRO/ng-zorro-antd/issues/364
+   */
   ngAfterViewInit() {
     if (this.subMenus.length) {
       this.subMenus
@@ -81,6 +90,10 @@ export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * fix nested menu issue
+   * @see https://github.com/NG-ZORRO/ng-zorro-antd/issues/364
+   */
   syncNzSubMenusLevel() {
     if (this.nzSubMenus.length) {
       this.nzSubMenus

@@ -3433,6 +3433,10 @@ ng2-charts@^1.6.0:
   dependencies:
     chart.js "^2.6.0"
 
+ngx-permissions@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-permissions/-/ngx-permissions-2.1.1.tgz#4a140753256e25d3c379d1c427cb8d5ca9aa97e2"
+
 ngx-progressbar@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-2.0.8.tgz#a3af14e82c1bf7179a66d42721c7f61d8df191de"

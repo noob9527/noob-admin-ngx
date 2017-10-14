@@ -1,3 +1,5 @@
+import { NaAclService } from '../na-core/na-service/na-acl/na-acl.service';
+import { UserService } from '../core/user/user.service';
 import { NaMenuService } from '../na-core/na-widget/na-sidebar/na-menu.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -8,12 +10,12 @@ import menuItems from './pages.menu';
   template: `
     <nz-layout>
       <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-        <app-na-sidebar [isCollapsed]="isCollapsed"></app-na-sidebar>
+        <na-sidebar [isCollapsed]="isCollapsed"></na-sidebar>
       </nz-sider>
       <nz-layout>
-        <app-na-page-top [(isCollapsed)]="isCollapsed"></app-na-page-top>
+        <na-page-top [(isCollapsed)]="isCollapsed"></na-page-top>
         <nz-content>
-          <app-na-content-top></app-na-content-top>
+          <na-content-top></na-content-top>
           <div class="main">
             <router-outlet></router-outlet>
           </div>
@@ -35,7 +37,11 @@ export class PagesComponent implements OnInit {
 
   isCollapsed = false;
 
-  constructor(private naMenuService: NaMenuService) {
+  constructor(
+    private naMenuService: NaMenuService,
+    userService: UserService,
+    naAclService: NaAclService,
+  ) {
   }
 
   ngOnInit() {

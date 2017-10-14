@@ -52,7 +52,6 @@ const menuItems: MenuItemMeta[] = [
     path: 'tables',
     title: 'Tables',
     icon: 'fa fa-table',
-    // icon: 'anticon anticon-database',
     order: 300,
     children: [
       {
@@ -76,8 +75,61 @@ const menuItems: MenuItemMeta[] = [
     ],
   },
   {
+    path: 'acl',
+    title: 'Acl',
+    icon: 'fa fa-lock',
+    order: 500,
+    children: [
+      {
+        path: 'manager',
+        title: 'Manager',
+        order: 0,
+      },
+      {
+        path: 'foo',
+        title: 'Foo',
+        order: 100,
+        data: {
+          permissions: {
+            only: 'foo',
+          },
+        },
+      },
+      {
+        path: 'bar',
+        title: 'Bar',
+        order: 200,
+        data: {
+          permissions: {
+            only: 'bar',
+          },
+        },
+      },
+      {
+        path: 'baz',
+        title: 'Baz',
+        order: 300,
+        data: {
+          permissions: {
+            only: 'baz',
+          },
+        },
+      },
+      {
+        path: 'qux',
+        title: 'Qux',
+        order: 400,
+        data: {
+          permissions: {
+            only: 'qux',
+          },
+        },
+      },
+    ],
+  },
+  {
     url: 'https://github.com/noob9527/noob-admin-ngx',
-    title: 'Static url',
+    title: 'Static Url',
     icon: 'anticon anticon-github',
     order: 20000,
   },
