@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'na-page-top',
   templateUrl: './na-page-top.component.html',
-  styleUrls: ['./na-page-top.component.scss']
+  styleUrls: ['./na-page-top.component.less']
 })
 export class NaPageTopComponent implements OnInit {
 

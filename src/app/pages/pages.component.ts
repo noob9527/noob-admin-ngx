@@ -24,14 +24,7 @@ import menuItems from './pages.menu';
       </nz-layout>
     </nz-layout>
     `,
-  styles: [`
-    :host > nz-layout {
-       height: 100%;
-    }
-    .main {
-      margin: 24px;
-    }
-  `],
+  styleUrls: ['./pages.component.less'],
 })
 export class PagesComponent implements OnInit {
 

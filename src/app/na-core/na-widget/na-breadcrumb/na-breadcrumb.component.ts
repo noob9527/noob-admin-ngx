@@ -20,7 +20,6 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
     </nz-breadcrumb-item>
   </nz-breadcrumb>
   `,
-  styleUrls: ['./na-breadcrumb.component.scss'],
 })
 export class NaBreadcrumbComponent implements OnInit {
 

@@ -49,7 +49,7 @@ import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
       </ul>
     </li>
   `,
-  styleUrls: ['./na-sidebar-menu-item.component.scss'],
+  styleUrls: ['./na-sidebar-menu-item.component.less'],
 })
 export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
 

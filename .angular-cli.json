@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.less"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -54,8 +54,10 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
+    "styleExt": "less",
     "component": {
+      "inlineStyle": true,
+      "inlineTemplate": true
     }
   }
 }

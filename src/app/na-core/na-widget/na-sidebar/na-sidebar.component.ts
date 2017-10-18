@@ -25,7 +25,7 @@ import { NaMenuService } from './na-menu.service';
       </ng-template>
     </ul>
   `,
-  styleUrls: ['./na-sidebar.component.scss'],
+  styleUrls: ['./na-sidebar.component.less'],
 })
 export class NaSidebarComponent implements OnInit {
 

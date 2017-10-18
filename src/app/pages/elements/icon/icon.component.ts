@@ -18,7 +18,7 @@ import icons from './icons';
     </div>
   </div>
   `,
-  styleUrls: ['./icon.component.scss']
+  styleUrls: ['./icon.component.less']
 })
 export class IconComponent {
   data = icons;

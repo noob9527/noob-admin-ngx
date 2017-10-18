@@ -1,4 +1,4 @@
-@import '~assets/styles/index.scss';
+@import '~assets/styles/index.less';
 
 .logo {
   text-align: center;
@@ -6,12 +6,12 @@
   line-height: 60px;
   cursor: pointer;
   margin: 28px 0;
-  transition: $transition-ease-out;
+  transition: @transition-ease-out;
   overflow: hidden;
 
   img {
     width: 60px;
-    transition: $transition-ease-out;
+    transition: @transition-ease-out;
   }
 
   span {
@@ -19,6 +19,7 @@
     font-size: 16px;
     text-transform: uppercase;
     display: inline-block;
+    color: @text-color-secondary-dark;
   }
 }
 
