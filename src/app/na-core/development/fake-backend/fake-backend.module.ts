@@ -7,6 +7,13 @@ import { MockService } from './mock.provider';
 import { AuthenticationMock } from './mocks/authentication.mock';
 import { CurrentUserMock } from './mocks/current-user.mock';
 
+/**
+ * useValue won't work with AOT compilation.
+ * I don't know why.
+ */
+export function mockServiceFactory() {
+  return Mock;
+}
 
 @NgModule({
   imports: [],
@@ -14,7 +21,7 @@ import { CurrentUserMock } from './mocks/current-user.mock';
   providers: [
     {
       provide: MockService,
-      useValue: Mock,
+      useFactory: mockServiceFactory,
     },
     AuthenticationMock,
     CurrentUserMock,

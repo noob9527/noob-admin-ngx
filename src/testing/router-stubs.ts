@@ -1,7 +1,7 @@
 /* tslint:disable */
 export { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 
-import { Component, Directive, Injectable, Input } from '@angular/core';
+import { Component, Directive, Injectable, Input, NgModule } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 
 @Directive({
@@ -54,4 +54,14 @@ export class ActivatedRouteStub {
   get snapshot() {
     return { params: this.testParams };
   }
+}
+
+@NgModule({
+  declarations:[
+    RouterLinkStubDirective,
+    RouterOutletStubComponent,
+  ],
+})
+export class RouterStubsModule {
+
 }
