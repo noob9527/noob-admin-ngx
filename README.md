@@ -1,4 +1,9 @@
-# NoobAdminNgx
+# Noob Admin Ngx
+
+### Features
+- [x] hot module replacement
+- [x] role permission based access control 
+- [x] AOT compatible
 
 ### Angular CLI
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
