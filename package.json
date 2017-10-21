@@ -10,7 +10,8 @@
     "test": "ng test --sourcemaps=false",
     "test:sourcemaps": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ghpages": "ng build --prod --env=ghpages --base-href \"/noob-admin-ngx/\" && angular-cli-ghpages"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +45,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/lodash": "^4.14.76",
     "@types/node": "~6.0.60",
+    "angular-cli-ghpages": "^0.5.1",
     "codelyzer": "~3.1.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
