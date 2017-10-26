@@ -1,6 +1,7 @@
-import { ItemType, MenuItem } from '../menu-item.model';
 import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
+
+import { ItemType, MenuItem } from '../menu-item.model';
 
 
 @Component({
@@ -41,6 +42,7 @@ import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
           [ngxPermissionsExcept]="item.data?.permissions?.except"
         >
           <na-sidebar-menu-item
+            [level]="level + 1"
             [menuItem]="item"
             [isCollapsed]="isCollapsed"
           >
@@ -54,7 +56,7 @@ import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
 export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
 
   itemTypes = ItemType;
-  level = 1;
+  @Input() level = 1;
   @Input() isCollapsed: boolean;
   @Input() menuItem: MenuItem;
   @ViewChildren(NzSubMenuComponent) nzSubMenus: QueryList<NzSubMenuComponent>;
@@ -70,6 +72,7 @@ export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
   }
 
   get isTitleVisible() {
+    // title of 1st level should be invisivle in Collapsed mode
     return !this.isCollapsed || this.level !== 1;
   }
 
@@ -83,7 +86,6 @@ export class NaSidebarMenuItemComponent implements OnInit, AfterViewInit {
         .filter(x => x !== this)
         .forEach(menu => {
           setTimeout(() => {
-            menu.level = this.level + 1;
             menu.syncNzSubMenusLevel();
           });
         });
