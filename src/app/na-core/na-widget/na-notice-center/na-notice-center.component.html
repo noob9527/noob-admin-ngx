@@ -1,0 +1,32 @@
+    <nz-popover
+      [nzTrigger]="'click'"
+      [nzOverlayClassName]="'na-notice-center-popover'"
+      (nzVisibleChange)="visibleChange($event)"
+      nzPlacement="bottomRight"
+    >
+      <div nz-popover>
+        <nz-badge [nzCount]="count">
+          <ng-template #content>
+            <i class="anticon anticon-bell"></i>
+          </ng-template>
+        </nz-badge>
+      </div>
+      <ng-template #nzTemplate>
+        <nz-spin [nzSpinning]="false">
+          <nz-tabset>
+            <nz-tab *ngIf="notificationComponent">
+              <ng-template #nzTabHeading>Notification</ng-template>
+              <ng-content select="na-notice-notification"></ng-content>
+            </nz-tab>
+            <nz-tab *ngIf="messageComponent">
+              <ng-template #nzTabHeading>Message</ng-template>
+              <ng-content select="na-notice-message"></ng-content>
+            </nz-tab>
+            <nz-tab *ngIf="todoComponent">
+              <ng-template #nzTabHeading>Todo</ng-template>
+              <ng-content select="na-notice-todo"></ng-content>
+            </nz-tab>
+          </nz-tabset>
+        </nz-spin>
+      </ng-template>
+    </nz-popover>

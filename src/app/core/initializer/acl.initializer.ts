@@ -13,6 +13,8 @@ export const PERMISSONS: string[] = [
 ];
 
 /**
+ * 初始化所有permission
+ *
  * angular compiler的bug, 这里必须导出函数
  * Error: Error encountered resolving symbol values statically.
  * Reference to a non-exported function

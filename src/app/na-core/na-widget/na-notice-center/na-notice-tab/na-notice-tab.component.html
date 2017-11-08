@@ -1,0 +1,45 @@
+<div class="na-notice-tab-list">
+  <div *ngIf="list.length" class="ant-list ant-list-split">
+    <nz-card
+      class="ant-list-item"
+      (click)="handleClick(item)"
+      [class.isReaded]="isReaded(item)"
+      *ngFor="let item of list"
+      [nzNoHovering]="true"
+      [nzBordered]="false"
+    >
+      <ng-template #body>
+        <div class="meta ant-list-item-meta">
+          <div *ngIf="item.naAvatar" class="ant-list-item-meta-avatar">
+            <nz-avatar class="avatar" [nzSrc]="item.naAvatar"></nz-avatar>
+          </div>
+          <div class="ant-list-item-meta-content">
+            <h4 class="ant-list-item-meta-title">
+              <div class="title">
+                {{item.naTitle}}
+                <div class="extra">
+                  {{item.naExtra}}
+                </div>
+              </div>
+            </h4>
+            <div class="ant-list-item-meta-description">
+              <div *ngIf="item.naDescription" class="description">
+                {{item.naDescription}}
+              </div>
+              <div *ngIf="item.naDateTime" class="datetime">
+                {{item.naDateTime}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </nz-card>
+    <div (click)="handleClear()" class="clear">
+      Clear All {{title}}
+    </div>
+  </div>
+  <div class="not-found" *ngIf="!list.length">
+    <img *ngIf="emptyImage" src="emptyImage" alt="not found"/>
+    <div *ngIf="emptyText">{{emptyText}}</div>
+  </div>
+</div>

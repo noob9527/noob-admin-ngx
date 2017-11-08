@@ -16,6 +16,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
+    "@angular/cdk": "^2.0.0-beta.8",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.2.4",
@@ -29,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "mockjs": "git+https://github.com/noob9527/Mock.git#d3d1049",
+    "moment": "^2.19.1",
     "ng-zorro-antd": "^0.5.2",
     "ng2-charts": "^1.6.0",
     "ngx-permissions": "^2.1.1",

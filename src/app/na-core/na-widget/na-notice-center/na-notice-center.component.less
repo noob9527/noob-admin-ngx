@@ -1,0 +1,39 @@
+:host {
+  div[nz-popover] {
+    padding: 0 15px;
+  }
+
+  i.anticon-bell {
+    font-size: 16px;
+    padding: 4px;
+  }
+}
+
+nz-tabset {
+  ::ng-deep {
+    nz-tabs-nav {
+      text-align: center;
+
+      .ant-tabs-nav-container {
+        line-height: 2;
+      }
+    }
+
+    .ant-tabs-bar {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+// global overlay style
+::ng-deep .na-notice-center-popover {
+  width: 400px;
+
+  .ant-popover-title {
+    display: none;
+  }
+
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+}

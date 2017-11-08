@@ -2,11 +2,9 @@ import { environment } from '../../../environments/environment';
 import { APP_INITIALIZER, Injector, NgModuleFactory, Provider, SystemJsNgModuleLoader } from '@angular/core';
 
 /**
- * angular compiler的bug, 这里必须导出函数
- * Error: Error encountered resolving symbol values statically.
- * Reference to a non-exported function
+ * init development module
  */
-export function loadDevelepmentModule(
+export function loadDevelopmentModule(
   loader: SystemJsNgModuleLoader,
   injector: Injector,
 ): () => Promise<any> {
@@ -21,7 +19,7 @@ export function loadDevelepmentModule(
 
 export const developmentInitializer: Provider = {
   provide: APP_INITIALIZER,
-  useFactory: loadDevelepmentModule,
+  useFactory: loadDevelopmentModule,
   multi: true,
   deps: [SystemJsNgModuleLoader, Injector]
 };

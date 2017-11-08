@@ -1,0 +1,93 @@
+@import '~assets/styles/antd/themes/default.less';
+@import '~assets/styles/antd/mixins/index';
+
+@list-prefix-cls: ~"@{ant-prefix}-list";
+
+nz-card {
+  // copy from antd-pro
+  max-height: 400px;
+  overflow: auto;
+  transition: all .3s;
+  overflow: hidden;
+  cursor: pointer;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  &.isReaded {
+    opacity: .4;
+  }
+
+  &:last-of-type {
+    border-bottom: 0 !important;
+  }
+
+  &:hover {
+    background: @primary-1;
+  }
+
+  ::ng-deep {
+    .ant-card-body {
+      padding: 0;
+      width: 100%;
+    }
+
+    .meta {
+      width: 100%;
+    }
+
+    .avatar {
+      background: #fff;
+      margin-top: 4px;
+    }
+
+    .title {
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 12px;
+      line-height: @line-height-base;
+    }
+
+    .datetime {
+      font-size: 12px;
+      margin-top: 4px;
+      line-height: @line-height-base;
+    }
+
+    .extra {
+      float: right;
+      color: @text-color-secondary;
+      font-weight: normal;
+      margin-right: 0;
+      margin-top: -1.5px;
+    }
+  }
+}
+
+.not-found {
+  text-align: center;
+  padding: 73px 0 88px 0;
+  color: @text-color-secondary;
+  img {
+    display: inline-block;
+    margin-bottom: 16px;
+    height: 76px;
+  }
+}
+
+.clear {
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  color: @text-color;
+  border-radius: 0 0 @border-radius-base @border-radius-base;
+  border-top: 1px solid @border-color-split;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    color: @heading-color;
+  }
+}

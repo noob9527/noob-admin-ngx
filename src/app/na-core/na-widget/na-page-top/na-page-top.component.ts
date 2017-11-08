@@ -6,34 +6,34 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'na-page-top',
-  templateUrl: './na-page-top.component.html',
+  template: `
+    <nz-header>
+      <i
+        class="anticon trigger"
+        [class.anticon-menu-fold]="!isCollapsed"
+        [class.anticon-menu-unfold]="isCollapsed"
+        (click)="toggleCollapsed()">
+      </i>
+      <div class="tool-bar">
+        <ng-content></ng-content>
+      </div>
+    </nz-header>
+  `,
   styleUrls: ['./na-page-top.component.less']
 })
 export class NaPageTopComponent implements OnInit {
 
   @Input() isCollapsed = false;
   @Output() isCollapsedChange = new EventEmitter<boolean>();
-  currentUser: NaUser = null;
 
   toggleCollapsed() {
     this.isCollapsed = !this.isCollapsed;
     this.isCollapsedChange.emit(this.isCollapsed);
   }
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private naUserService: NaUserService,
-    private router: Router,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.naUserService.currentUser
-      .subscribe(res => this.currentUser = res);
-  }
-
-  signOut() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
   }
 
 }

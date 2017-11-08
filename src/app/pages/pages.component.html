@@ -1,0 +1,33 @@
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <na-sidebar [isCollapsed]="isCollapsed"></na-sidebar>
+  </nz-sider>
+  <nz-layout>
+    <na-page-top [(isCollapsed)]="isCollapsed">
+      <na-notice-center
+        (onPopupVisibleChange)="handleNoticePopupVisibleChange($event)"
+      >
+        <na-notice-notification
+          (onClear)="handleNoticeClear(NaNoticeType.Notification)"
+          (onClick)="handleNoticeClick($event, NaNoticeType.Notification)"
+        ></na-notice-notification>
+        <na-notice-message
+          (onClear)="handleNoticeClear(NaNoticeType.Message)"
+          (onClick)="handleNoticeClick($event, NaNoticeType.Message)"
+        ></na-notice-message>
+        <na-notice-todo
+          (onClear)="handleNoticeClear(NaNoticeType.Todo)"
+          (onClick)="handleNoticeClick($event, NaNoticeType.Todo)"
+        ></na-notice-todo>
+      </na-notice-center>
+      <na-user-center></na-user-center>
+    </na-page-top>
+    <nz-content>
+      <na-content-top></na-content-top>
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>Noob-Admin ©2017</nz-footer>
+  </nz-layout>
+</nz-layout>

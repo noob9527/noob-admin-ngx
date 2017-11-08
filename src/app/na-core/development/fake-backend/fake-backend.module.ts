@@ -1,3 +1,4 @@
+import { NoticeMock } from './mocks/notice.mock';
 import { LoggerService } from '../../na-utils/logger/logger.service';
 import { NgModule } from '@angular/core';
 import Mock from 'mockjs';
@@ -25,6 +26,7 @@ export function mockServiceFactory() {
     },
     AuthenticationMock,
     CurrentUserMock,
+    NoticeMock,
   ],
 })
 export class FakeBackendModule {
@@ -32,6 +34,7 @@ export class FakeBackendModule {
     logger: LoggerService,
     authenticationMock: AuthenticationMock,
     currentUserMock: CurrentUserMock,
+    noticeMock: NoticeMock,
   ) {
     if (!environment.mockBackend) return;
 
@@ -44,6 +47,7 @@ export class FakeBackendModule {
     [
       authenticationMock,
       currentUserMock,
+      noticeMock,
     ].forEach(mock => {
       logger.debug(`${mock.constructor.name} register`);
       mock.register();

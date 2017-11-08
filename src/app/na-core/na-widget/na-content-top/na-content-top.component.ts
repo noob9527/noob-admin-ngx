@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
   template: `
   <ng-container>
     <na-breadcrumb></na-breadcrumb>
+    <ng-content></ng-content>
   </ng-container>
   `,
   styles: [`
     :host{
       display: flex;
-      justify-content: space-between;
       align-items: center;
       height: 64px;
       margin: 0 24px -24px 24px;
