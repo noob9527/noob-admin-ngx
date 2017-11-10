@@ -28,7 +28,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
-    "mockjs": "^1.0.1-beta3",
+    "mockjs": "git+https://github.com/noob9527/Mock.git#d3d1049",
     "ng-zorro-antd": "^0.5.2",
     "ng2-charts": "^1.6.0",
     "ngx-permissions": "^2.1.1",
