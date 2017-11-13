@@ -1,4 +1,4 @@
-moment@2.18.1 MIT
+moment@2.19.1 MIT
 Copyright (c) JS Foundation and other contributors
 
 Permission is hereby granted, free of charge, to any person
