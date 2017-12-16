@@ -15,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
             [nzIcon]="'user'"
           >
           </nz-avatar>
-          {{currentUser.naAccount}}
+          {{currentUser?.naAccount}}
         </a>
         <ul class="tool-bar-menu" nz-menu>
           <li nz-menu-item nzDisable="true"><i class="anticon anticon-user"></i>profile</li>

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { ɵen as NzSubMenuComponent } from 'ng-zorro-antd';
+import { NzSubMenuComponent } from 'ng-zorro-antd';
 
 import { ItemType, MenuItem } from '../menu-item.model';
 
