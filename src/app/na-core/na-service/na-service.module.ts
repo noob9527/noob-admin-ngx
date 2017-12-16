@@ -1,32 +1,28 @@
-import { BaseUrlInterceptor } from './base-url.interceptor';
+import { NaBaseUrlInterceptorProvider } from './na-base-url.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Logger, StorageService } from './injection-tokens';
-import { NaAclModule } from './na-acl/na-acl.module';
-import { NaUserModule } from './na-user/na-user.module';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { NgModule } from '@angular/core';
+
+import { NaAclModule } from './na-acl/na-acl.module';
+import { NaAuthenticationModule } from './na-authentication/na-authentication.module';
+import { NaConfigProvider } from './na-config.provider';
+import { NaLoggerProvider } from './na-logger.provider';
+import { NaStorageProvider } from './na-storage.provider';
+import { NaStoreService } from './na-store.service';
+import { NaUserModule } from './na-user/na-user.module';
 
 @NgModule({
   imports: [
-    AuthenticationModule,
+    NaAuthenticationModule,
     NaUserModule,
     NaAclModule,
   ],
   declarations: [],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BaseUrlInterceptor,
-      multi: true,
-    },
-    {
-      provide: StorageService,
-      useValue: localStorage,
-    },
-    {
-      provide: Logger,
-      useValue: console,
-    },
+    NaStoreService,
+    NaStorageProvider,
+    NaConfigProvider,
+    NaLoggerProvider,
+    NaBaseUrlInterceptorProvider,
   ],
 })
 export class NaServiceModule { }

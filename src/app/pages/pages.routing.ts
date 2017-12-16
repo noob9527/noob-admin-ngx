@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
-import { AuthGuard } from '../na-core/na-service/authentication/auth.guard';
+import { NaAuthenticationGuard } from '../na-core/na-service/na-authentication/na-authentication.guard';
 import { PagesComponent } from './pages.component';
 
 export const routes: Routes = [
@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    canActivate: [AuthGuard],
+    canActivate: [NaAuthenticationGuard],
     canActivateChild: [NgxPermissionsGuard],
     children: [
       {

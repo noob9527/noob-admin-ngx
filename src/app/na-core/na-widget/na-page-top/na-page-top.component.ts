@@ -1,7 +1,7 @@
 import { NaUser } from '../../na-service/na-user/na-user.domain';
 import { NaUserService } from '../../na-service/na-user/na-user.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../na-service/authentication/authentication.service';
+import { NaAuthenticationService } from '../../na-service/na-authentication/na-authentication.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({

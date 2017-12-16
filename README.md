@@ -2,8 +2,11 @@
 
 ### TBD
 - [x] hot module replacement
-- [x] role permission based access control 
 - [x] AOT compatible
+- [x] angular5 compatible
+- [x] common token based authentication
+- [x] role permission based access control 
+- [ ] common exception handler
 - [ ] resolve sidebar scrollbar issue
 - [ ] g2
 

@@ -1,17 +1,15 @@
-import { StorageService } from '../../na-service/injection-tokens';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import { Inject, Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
-export interface Credential {
-  username: string;
-  passowrd: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs/Rx';
+
+import { NaStoreService } from '../na-store.service';
+import { NaCredentials } from './na-authentication.domain';
 
 @Injectable()
-export class AuthenticationService {
+export class NaAuthenticationService {
 
   private token: string;
 
@@ -19,26 +17,26 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
-    @Inject(StorageService) private storage: Storage,
+    private naStoreService: NaStoreService,
   ) {
-    const token = storage.getItem('token');
+    const token = this.naStoreService.getToken();
     if (token) this.authenticateSuccess(token);
   }
 
-  login(credential: Credential): Observable<boolean> {
-    return this.http.post('/authenticate', credential)
+  login(credentials: NaCredentials): Observable<boolean> {
+    return this.http.post('/authenticate', credentials)
       .do((res: { token: string }) => void this.authenticateSuccess(res.token))
       .map(_ => true);
   }
 
   logout() {
-    this.storage.removeItem('token');
+    this.naStoreService.removeToken();
     this.isAuthenticated.next(false);
   }
 
   private authenticateSuccess(token: string) {
     this.token = token;
-    this.storage.setItem('token', this.token);
+    this.naStoreService.setToken(token);
     this.isAuthenticated.next(true);
   }
 }

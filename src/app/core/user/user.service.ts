@@ -1,9 +1,9 @@
-import { StorageService } from '../../na-core/na-service/injection-tokens';
+import { STORAGE } from '../../na-core/na-service/na-storage.provider';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/Rx';
 
-import { AuthenticationService } from '../../na-core/na-service/authentication/authentication.service';
+import { NaAuthenticationService } from '../../na-core/na-service/na-authentication/na-authentication.service';
 import { NaUserService } from '../../na-core/na-service/na-user/na-user.service';
 import { User, UserResponse } from './user.domain';
 
@@ -14,8 +14,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    @Inject(StorageService) private storage: Storage,
-    private authenticateionService: AuthenticationService,
+    @Inject(STORAGE) private storage: Storage,
+    private authenticateionService: NaAuthenticationService,
     private naUserService: NaUserService,
   ) {
     this.authenticateionService.isAuthenticated.subscribe(res => {

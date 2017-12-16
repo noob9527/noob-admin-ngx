@@ -1,4 +1,4 @@
-import { AuthenticationService } from '../../na-service/authentication/authentication.service';
+import { NaAuthenticationService } from '../../na-service/na-authentication/na-authentication.service';
 import { NaUserService } from '../../na-service/na-user/na-user.service';
 import { Router } from '@angular/router';
 import { NaUser } from '../../na-service/na-user/na-user.domain';
@@ -32,7 +32,7 @@ export class NaUserCenterComponent implements OnInit {
   currentUser: NaUser = null;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private authenticationService: NaAuthenticationService,
     private naUserService: NaUserService,
     private router: Router,
   ) { }

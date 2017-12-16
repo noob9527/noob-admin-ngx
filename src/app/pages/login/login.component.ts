@@ -1,8 +1,10 @@
-import { environment } from '../../../environments/environment';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthenticationService, Credential } from '../../na-core/na-service/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { environment } from '../../../environments/environment';
+import { NaCredentials } from '../../na-core/na-service/na-authentication/na-authentication.domain';
+import { NaAuthenticationService } from '../../na-core/na-service/na-authentication/na-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
+    private authenticationService: NaAuthenticationService,
     private fb: FormBuilder,
   ) {
     this.form = fb.group({
@@ -28,8 +30,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(credential: Credential) {
-    this.authenticationService.login(credential)
+  onSubmit(credentials: NaCredentials) {
+    this.authenticationService.login(credentials)
       .subscribe(res => {
         if (res) this.router.navigate(['/']);
       });

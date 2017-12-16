@@ -1,4 +1,4 @@
-import { Logger } from '../../na-service/injection-tokens';
+import { LOGGER, Logger } from '../../na-service/na-logger.provider';
 import { Inject, Injectable } from '@angular/core';
 import { MockService } from './mock.provider';
 
@@ -9,7 +9,7 @@ export abstract class BaseMockService {
 
   constructor(
     @Inject(MockService) protected Mock: any,
-    @Inject(Logger) protected logger: Logger,
+    @Inject(LOGGER) protected logger: Logger,
   ) {
   }
 
