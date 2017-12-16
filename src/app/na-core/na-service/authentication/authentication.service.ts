@@ -1,6 +1,7 @@
+import { StorageService } from '../../na-service/injection-tokens';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -16,8 +17,11 @@ export class AuthenticationService {
 
   isAuthenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
-    const token = localStorage.getItem('token');
+  constructor(
+    private http: HttpClient,
+    @Inject(StorageService) private storage: Storage,
+  ) {
+    const token = storage.getItem('token');
     if (token) this.authenticateSuccess(token);
   }
 
@@ -28,13 +32,13 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.storage.removeItem('token');
     this.isAuthenticated.next(false);
   }
 
   private authenticateSuccess(token: string) {
     this.token = token;
-    localStorage.setItem('token', this.token);
+    this.storage.setItem('token', this.token);
     this.isAuthenticated.next(true);
   }
 }

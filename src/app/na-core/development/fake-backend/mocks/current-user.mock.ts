@@ -1,5 +1,6 @@
+import { getUrl } from '../../../na-utils';
 import { TEST_ROLE } from '../../../../core/initializer/acl.initializer';
-import { Permission, UserMeta } from '../../../../core/user/user.domain';
+import { Permission, UserResponse } from '../../../../core/user/user.domain';
 import { BaseMockService } from '../base-mock.service';
 
 export class CurrentUserMock extends BaseMockService {
@@ -15,7 +16,7 @@ export class CurrentUserMock extends BaseMockService {
     };
     roleTest.permissions = TEST_ROLE.map(e => ({ name: e }));
 
-    const fakeUser: UserMeta = {
+    const fakeUser: UserResponse = {
       account: 'admin',
       avatar: 'https://api.adorable.io/avatars/100/noob9527.png',
       roles: [
@@ -23,6 +24,6 @@ export class CurrentUserMock extends BaseMockService {
         roleTest,
       ],
     };
-    this.Mock.mock('/api/v1/users', 'get', fakeUser);
+    this.Mock.mock(getUrl('user'), 'get', fakeUser);
   }
 }

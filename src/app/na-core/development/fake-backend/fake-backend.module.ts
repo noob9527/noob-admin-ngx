@@ -1,12 +1,13 @@
-import { NoticeMock } from './mocks/notice.mock';
-import { LoggerService } from '../../na-utils/logger/logger.service';
+import { Inject } from '@angular/core';
 import { NgModule } from '@angular/core';
 import Mock from 'mockjs';
 
 import { environment } from '../../../../environments/environment';
+import { Logger } from '../../na-service/injection-tokens';
 import { MockService } from './mock.provider';
 import { AuthenticationMock } from './mocks/authentication.mock';
 import { CurrentUserMock } from './mocks/current-user.mock';
+import { NoticeMock } from './mocks/notice.mock';
 
 /**
  * useValue won't work with AOT compilation.
@@ -31,7 +32,7 @@ export function mockServiceFactory() {
 })
 export class FakeBackendModule {
   constructor(
-    logger: LoggerService,
+    @Inject(Logger) logger: Logger,
     authenticationMock: AuthenticationMock,
     currentUserMock: CurrentUserMock,
     noticeMock: NoticeMock,

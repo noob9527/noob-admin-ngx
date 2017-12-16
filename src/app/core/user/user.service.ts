@@ -1,9 +1,11 @@
+import { StorageService } from '../../na-core/na-service/injection-tokens';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/Rx';
+
 import { AuthenticationService } from '../../na-core/na-service/authentication/authentication.service';
 import { NaUserService } from '../../na-core/na-service/na-user/na-user.service';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs/Rx';
-import { User, UserMeta } from './user.domain';
-import { Injectable } from '@angular/core';
+import { User, UserResponse } from './user.domain';
 
 @Injectable()
 export class UserService {
@@ -12,13 +14,14 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
+    @Inject(StorageService) private storage: Storage,
     private authenticateionService: AuthenticationService,
     private naUserService: NaUserService,
   ) {
     this.authenticateionService.isAuthenticated.subscribe(res => {
-      const userStr = localStorage.getItem('currentUser');
+      const userStr = storage.getItem('currentUser');
       if (userStr) {
-        const userMeta: UserMeta = JSON.parse(userStr);
+        const userMeta: UserResponse = JSON.parse(userStr);
         this.onUpdateSuccess(new User(userMeta));
       } else {
         this.retrieve();
@@ -27,14 +30,17 @@ export class UserService {
   }
 
   retrieve() {
-    return this.http.get<UserMeta>('/users')
-      .subscribe(res => {
-        this.onUpdateSuccess(new User(res));
-      });
+    return this.http.get<UserResponse>('/user', {
+      params: {
+        current: 'true',
+      },
+    }).subscribe(res => {
+      this.onUpdateSuccess(new User(res));
+    });
   }
 
   private onUpdateSuccess(user: User) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.storage.setItem('currentUser', JSON.stringify(user));
     this.naUserService.setCurrentUser(user);
     this.currentUser.next(user);
   }

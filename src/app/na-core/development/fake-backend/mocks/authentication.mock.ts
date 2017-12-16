@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { getUrl } from '../../../na-utils';
 import { BaseMockService } from '../base-mock.service';
 
 export class AuthenticationMock extends BaseMockService {
 
   register(): void {
-    this.Mock.mock('/api/v1/authenticate', 'post', {
+    this.Mock.mock(getUrl('authenticate'), 'post', {
       token: 'fake token',
     });
   }

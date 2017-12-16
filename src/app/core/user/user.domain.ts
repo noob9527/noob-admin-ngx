@@ -1,6 +1,6 @@
 import { NaUser } from '../../na-core/na-service/na-user/na-user.domain';
 
-export interface UserMeta {
+export interface UserResponse {
   account: string;
   avatar?: string;
   roles: Role[];
@@ -13,7 +13,7 @@ export class User implements NaUser {
   isRoot: boolean;
   [index: string]: any;
 
-  constructor(meta: UserMeta) {
+  constructor(meta: UserResponse) {
     Object.assign(this, meta);
   }
 

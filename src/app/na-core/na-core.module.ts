@@ -6,7 +6,6 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { developmentInitializer } from './na-initializer/development.initializer';
 import { NaServiceModule } from './na-service/na-service.module';
-import { NaUtilsModule } from './na-utils/na-utils.module';
 import { NaWidgetModule } from './na-widget/na-widget.module';
 
 
@@ -23,7 +22,6 @@ import { NaWidgetModule } from './na-widget/na-widget.module';
 @NgModule({
   imports: [
     HttpClientModule,
-    NaUtilsModule,
     NaServiceModule,
     NaWidgetModule,
     BrowserAnimationsModule,

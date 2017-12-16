@@ -1,3 +1,4 @@
+import { getUrl } from '../../../na-utils';
 import { BaseMockService } from '../base-mock.service';
 
 const fakeData = [{
@@ -84,7 +85,7 @@ const fakeData = [{
 
 export class NoticeMock extends BaseMockService {
   register() {
-    this.Mock.mock('/api/v1/notices', 'get', fakeData);
-    this.Mock.mock('/api/v1/noticesCount', 'get', { count: fakeData.length });
+    this.Mock.mock(getUrl('notices'), 'get', fakeData);
+    this.Mock.mock(getUrl('noticesCount'), 'get', { count: fakeData.length });
   }
 }
