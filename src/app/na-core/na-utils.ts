@@ -9,3 +9,7 @@ export function getUrl(resourceUrl: string) {
     return environment.baseUrl + slash + resourceUrl;
   }
 }
+
+export function isProd() {
+  return environment.production;
+}

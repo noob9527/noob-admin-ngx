@@ -6,7 +6,7 @@
 - [x] angular5 compatible
 - [x] common token based authentication
 - [x] role permission based access control 
-- [ ] common exception handler
+- [x] common exception handler
 - [ ] resolve sidebar scrollbar issue
 - [ ] g2
 

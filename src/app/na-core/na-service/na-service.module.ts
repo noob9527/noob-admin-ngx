@@ -1,3 +1,4 @@
+import { NaErrorHandlerModule } from './na-error-handler/na-error-handler.module';
 import { NaBaseUrlInterceptorProvider } from './na-base-url.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { NaUserModule } from './na-user/na-user.module';
     NaAuthenticationModule,
     NaUserModule,
     NaAclModule,
+    NaErrorHandlerModule,
   ],
   declarations: [],
   providers: [
