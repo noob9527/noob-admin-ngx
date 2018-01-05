@@ -1,4 +1,4 @@
-import { NA_CONFIG, NaConfig } from '../na-config.provider';
+import { NA_CONFIG, NaConfig } from '../../na-config';
 import { NaStoreService } from '../na-store.service';
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Inject, Injectable, Provider } from '@angular/core';

@@ -22,7 +22,7 @@ export abstract class Notice implements NaNotice {
       case 'TODO':
         return new Todo(meta);
     }
-    return null;
+    throw Error('unrecognized notice type');
   }
 
   constructor(meta: any) {
@@ -47,6 +47,8 @@ export abstract class Notice implements NaNotice {
       case 'TODO':
         noticeType = NaNoticeType.Todo;
         break;
+      default:
+        throw Error('unrecognized notice type');
     }
     return noticeType;
   }

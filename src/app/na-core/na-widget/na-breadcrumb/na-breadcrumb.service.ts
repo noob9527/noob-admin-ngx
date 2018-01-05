@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
@@ -42,7 +41,7 @@ export class NaBreadcrumbService {
     const breadcrumbs: Breadcrumb[] = [...this.prefixBreadcrumbs];
     let url = '';
     let currentRoute = getValidChild(route);
-    while (currentRoute) {
+    while (currentRoute && currentRoute.snapshot) {
       const routeUrl = currentRoute.snapshot.url
         .map(segment => segment.path)
         .join('/');
@@ -85,7 +84,7 @@ function addItemDistinct(arr: Breadcrumb[], item: Breadcrumb) {
 function metaToBreadcrumb(
   meta: BreadcrumbMeta | string,
   url: string,
-  params: Params,
+  params?: Params,
 ): Breadcrumb {
   const param = typeof meta === 'string'
     ? { label: meta }
@@ -97,7 +96,7 @@ function metaToBreadcrumb(
   };
 }
 
-function getValidChild(route: SimpleRouteForTest): SimpleRouteForTest {
+function getValidChild(route: SimpleRouteForTest): SimpleRouteForTest|undefined {
   return route
     && route.children
     && route.children.find(e => e.outlet === PRIMARY_OUTLET);

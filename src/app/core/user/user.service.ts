@@ -10,7 +10,7 @@ import { User, UserResponse } from './user.domain';
 @Injectable()
 export class UserService {
 
-  currentUser = new BehaviorSubject<User>(null);
+  currentUser = new BehaviorSubject<Maybe<User>>(null);
 
   constructor(
     private http: HttpClient,

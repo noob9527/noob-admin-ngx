@@ -7,6 +7,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { developmentInitializer } from './na-initializer/development.initializer';
 import { NaServiceModule } from './na-service/na-service.module';
 import { NaWidgetModule } from './na-widget/na-widget.module';
+import { defaultNaConfig, NA_CONFIG, NaConfig } from './na-config';
 
 
 /**
@@ -32,7 +33,7 @@ import { NaWidgetModule } from './na-widget/na-widget.module';
   ],
 })
 export class NaCoreModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config?: NaConfig): ModuleWithProviders {
     return {
       ngModule: NaCoreModule,
       providers: [
@@ -44,6 +45,10 @@ export class NaCoreModule {
           },
         ]),
         developmentInitializer,
+        {
+          provide: NA_CONFIG,
+          useValue: Object.assign({}, defaultNaConfig, config),
+        }
       ],
     };
   }

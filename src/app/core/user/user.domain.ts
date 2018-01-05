@@ -21,7 +21,7 @@ export class User implements NaUser {
     return this.account;
   }
 
-  get naAvatar(): string {
+  get naAvatar(): string | undefined {
     return this.avatar;
   }
 

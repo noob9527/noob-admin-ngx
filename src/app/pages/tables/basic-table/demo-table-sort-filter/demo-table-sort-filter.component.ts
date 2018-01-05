@@ -15,12 +15,12 @@ export class DemoTableSortFilterComponent implements OnInit {
     { name: 'Sidney', value: false }
   ];
   sortMap = {
-    name: <string>null,
-    age: <number>null,
-    address: <string>null
+    name: null as Maybe<string>,
+    age: null as Maybe<number>,
+    address: null as Maybe<string>,
   };
-  sortName: string = null;
-  sortValue: string = null;
+  sortName: Maybe<string> = null;
+  sortValue: Maybe<string> = null;
   data = [
     {
       name: 'John Brown',
@@ -60,13 +60,13 @@ export class DemoTableSortFilterComponent implements OnInit {
     const searchName = this.filterNameArray.filter(name => name.value);
     const filterFunc = (item: any) => {
       return (searchAddress.length ? searchAddress.some(address => item.address.indexOf(address.name) !== -1) : true) &&
-        (searchName.length ? searchName.some(name => item.name.indexOf(name.name) !== -1) : true)
+        (searchName.length ? searchName.some(name => item.name.indexOf(name.name) !== -1) : true);
     };
     this.data = [...this.copyData.filter(item => filterFunc(item))];
     this.data = [...this.data.sort((a: any, b: any) => {
-      if (a[this.sortName] > b[this.sortName]) {
+      if (a[this.sortName!] > b[this.sortName!]) {
         return (this.sortValue === 'ascend') ? 1 : -1;
-      } else if (a[this.sortName] < b[this.sortName]) {
+      } else if (a[this.sortName!] < b[this.sortName!]) {
         return (this.sortValue === 'ascend') ? -1 : 1;
       } else {
         return 0;
@@ -80,7 +80,9 @@ export class DemoTableSortFilterComponent implements OnInit {
     });
     this.search();
   }
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -2,7 +2,7 @@
 declare var module: NodeModule;
 interface NodeModule {
   id: string;
-  [index: string]: any
+  [index: string]: any;
 }
 
 /*
@@ -39,4 +39,5 @@ interface NodeModule {
  *
  */
 
+declare type Maybe<T> = T | null | undefined;
 declare module 'mockjs';

@@ -29,7 +29,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaUserCenterComponent implements OnInit {
 
-  currentUser: NaUser = null;
+  currentUser: Maybe<NaUser> = null;
 
   constructor(
     private authenticationService: NaAuthenticationService,

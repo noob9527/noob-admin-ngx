@@ -30,7 +30,7 @@ export class IconComponent {
   ) { }
 
   copy(group: any, item: any) {
-    let copyTextArea = null as HTMLTextAreaElement;
+    let copyTextArea = null;
     try {
       copyTextArea = this.dom.createElement('textarea');
       copyTextArea.style.height = '0px';

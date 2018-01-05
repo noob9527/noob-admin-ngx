@@ -6,7 +6,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 @Injectable()
 export class NaUserService {
 
-  currentUser = new BehaviorSubject<NaUser>(null);
+  currentUser = new BehaviorSubject<Maybe<NaUser>>(null);
 
   constructor(private ngxPermissionService: NgxPermissionsService) { }
 

@@ -1,8 +1,6 @@
-import { NA_CONFIG, NaConfig } from './na-config.provider';
+import { NA_CONFIG, NaConfig } from '../na-config';
 import { STORAGE } from './na-storage.provider';
 import { Inject, Injectable } from '@angular/core';
-
-const TOKEN_KEY = 'Authorization';
 
 @Injectable()
 export class NaStoreService {
@@ -12,7 +10,7 @@ export class NaStoreService {
     @Inject(NA_CONFIG) private naConfig: NaConfig,
   ) { }
 
-  getToken(): string {
+  getToken(): Maybe<string> {
     return this.storage.getItem(this.naConfig.tokenKey);
   }
 

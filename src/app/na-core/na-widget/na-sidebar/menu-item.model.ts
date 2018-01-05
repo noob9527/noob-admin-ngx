@@ -25,7 +25,7 @@ export interface MenuItemMeta {
 export class MenuItem implements MenuItemMeta {
 
   path?: string;
-  paths?: string[];
+  paths?: Maybe<string>[];
   url?: string;
   target?: '_blank' | '_self' | '_parent' | '_top' = '_blank';
   children?: MenuItemMeta[];

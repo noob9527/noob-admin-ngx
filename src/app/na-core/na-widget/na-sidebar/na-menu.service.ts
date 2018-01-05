@@ -20,7 +20,7 @@ export class NaMenuService {
         return this.convertSingle(e, parent);
       })
       .sort((a, b) => {
-        return a.order - b.order;
+        return a.order! - b.order!;
       });
   }
 

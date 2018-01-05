@@ -25,7 +25,7 @@ export class NaAclService {
 
     this.naUserService.currentUser
       .filter(naUser => !!naUser)
-      .map(naUser => naUser.naPermissions)
+      .map(naUser => naUser!.naPermissions)
       .subscribe(this.userPermissions);
 
     this.userPermissions.subscribe(res => {
@@ -42,7 +42,6 @@ export class NaAclService {
   }
 
   private refreshPermission(userPermissions: string[]) {
-    const self = this;
     this.ngxPermissionService.flushPermissions();
     this.ngxPermissionService
       .loadPermissions(this.initPermissions, (permissionName: string) => {

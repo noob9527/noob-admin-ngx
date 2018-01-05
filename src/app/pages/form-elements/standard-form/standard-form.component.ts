@@ -14,7 +14,7 @@ export class StandardFormComponent {
     { value: 'disabled', label: 'Disabled', disabled: true }
   ];
 
-  cityValue: any[] = null;
+  cityValue: any[];
   cities = [{
     value: 'zhejiang',
     label: 'Zhejiang',
