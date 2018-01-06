@@ -8,7 +8,7 @@ import { NaUserService } from '../../na-core/na-service/na-user/na-user.service'
 import { User, UserResponse } from './user.domain';
 
 @Injectable()
-export class UserService {
+export class CurrentUserService {
 
   currentUser = new BehaviorSubject<Maybe<User>>(null);
 

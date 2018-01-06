@@ -1,12 +1,22 @@
 import { NaUser } from '../../na-core/na-service/na-user/na-user.domain';
 
+export enum Gender {
+  MALE = 'MALE', FEMALE = 'FEMALE'
+}
+
 export interface UserResponse {
+  id: number;
+  gender: Gender;
+  age: number;
   account: string;
   avatar?: string;
   roles: Role[];
 }
 
-export class User implements NaUser {
+export class User implements NaUser, UserResponse {
+  id: number;
+  gender: Gender;
+  age: number;
   account: string;
   avatar?: string;
   roles: Role[];

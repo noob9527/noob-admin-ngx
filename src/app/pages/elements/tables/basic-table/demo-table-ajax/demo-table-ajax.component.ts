@@ -9,46 +9,44 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class DemoTableAjaxComponent implements OnInit {
-  _current = 1;
-  _pageSize = 10;
-  _total = 1;
-  _dataSet: any[] = [];
-  _loading = true;
-  _sortValue: any = null;
-  _filterGender = [
+  pageIndex = 1;
+  pageSize = 10;
+  total = 1;
+  dataSet: any[] = [];
+  loading = true;
+  sortValue: any = null;
+  filterGender = [
     { name: 'male', value: false },
     { name: 'female', value: false }
   ];
 
   sort(value: any) {
-    this._sortValue = value;
-    this.refreshData();
+    this.sortValue = value;
+    this.fetchData();
   }
 
   reset() {
-    this._filterGender.forEach(item => {
+    this.filterGender.forEach(item => {
       item.value = false;
     });
-    this.refreshData(true);
+    this.fetchData();
   }
 
-  constructor(private _randomUser: RandomUserService) {
+  constructor(private randomUserService: RandomUserService) {
   }
 
-  refreshData(reset = false) {
-    if (reset) {
-      this._current = 1;
-    }
-    this._loading = true;
-    const selectedGender = this._filterGender.filter(item => item.value).map(item => item.name);
-    this._randomUser.getUsers(this._current, this._pageSize, 'name', this._sortValue, selectedGender).subscribe((data: any) => {
-      this._loading = false;
-      this._total = 200;
-      this._dataSet = data.results;
+  fetchData(pageIndex: number = 1) {
+    this.pageIndex = pageIndex;
+    this.loading = true;
+    const selectedGender = this.filterGender.filter(item => item.value).map(item => item.name);
+    this.randomUserService.getUsers(this.pageIndex, this.pageSize, 'name', this.sortValue, selectedGender).subscribe((data: any) => {
+      this.loading = false;
+      this.total = 200;
+      this.dataSet = data.results;
     });
   }
 
   ngOnInit() {
-    this.refreshData();
+    this.fetchData();
   }
 }
