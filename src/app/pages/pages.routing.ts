@@ -32,27 +32,6 @@ export const routes: Routes = [
         },
       },
       {
-        path: 'form',
-        loadChildren: './form-elements/form-elements.module#FormElementsModule',
-        data: {
-          breadcrumb: { label: 'Form elements' },
-        },
-      },
-      {
-        path: 'tables',
-        loadChildren: './tables/tables.module#TablesModule',
-        data: {
-          breadcrumb: { label: 'Tables' },
-        },
-      },
-      {
-        path: 'charts',
-        loadChildren: './charts/charts.module#ChartsModule',
-        data: {
-          breadcrumb: { label: 'Charts' },
-        },
-      },
-      {
         path: 'acl',
         loadChildren: './acl/acl.module#AclModule',
         data: {

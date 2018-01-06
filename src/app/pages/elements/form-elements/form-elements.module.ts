@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { StandardFormComponent } from './standard-form/standard-form.component';
 
@@ -21,6 +21,7 @@ const routes: Routes = [
   ],
   declarations: [
     StandardFormComponent
-],
+  ],
 })
-export class FormElementsModule { }
+export class FormElementsModule {
+}

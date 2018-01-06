@@ -33,44 +33,27 @@ const menuItems: MenuItemMeta[] = [
         title: 'Notification',
         order: 300,
       },
-    ],
-  },
-  {
-    path: 'form',
-    title: 'Forms',
-    icon: 'anticon anticon-edit',
-    order: 200,
-    children: [
       {
-        path: 'standard',
-        title: 'Standard Form',
-        order: 0,
+        path: 'form',
+        title: 'Forms',
+        order: 400,
       },
-    ],
-  },
-  {
-    path: 'tables',
-    title: 'Tables',
-    icon: 'fa fa-table',
-    order: 300,
-    children: [
       {
-        path: 'basic',
-        title: 'Basic Table',
-        order: 0,
+        path: 'tables',
+        title: 'Tables',
+        order: 500,
       },
-    ],
-  },
-  {
-    path: 'charts',
-    title: 'Charts',
-    icon: 'anticon anticon-area-chart',
-    order: 400,
-    children: [
       {
-        path: 'chartjs',
-        title: 'Chartjs',
-        order: 0,
+        path: 'charts',
+        title: 'Charts',
+        order: 600,
+        children: [
+          {
+            path: 'chartjs',
+            title: 'Chartjs',
+            order: 0,
+          },
+        ],
       },
     ],
   },
