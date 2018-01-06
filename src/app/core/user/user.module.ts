@@ -1,5 +1,5 @@
 import { NaCoreModule } from '../../na-core/na-core.module';
-import { UserService } from './user.service';
+import { UserService } from './current-user.service';
 import { NgModule } from '@angular/core';
 
 @NgModule({

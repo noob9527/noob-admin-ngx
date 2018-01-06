@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export function getUrl(resourceUrl: string) {
   if (!resourceUrl) throw Error('resourceUrl should not be empty');

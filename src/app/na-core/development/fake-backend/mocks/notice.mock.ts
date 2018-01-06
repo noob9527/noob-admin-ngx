@@ -1,4 +1,4 @@
-import { getUrl } from '../../../na-utils';
+import { getUrl } from '../../../na-utils/na-utils';
 import { BaseMockService } from '../base-mock.service';
 
 const fakeData = [{

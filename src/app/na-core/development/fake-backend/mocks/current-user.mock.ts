@@ -1,4 +1,4 @@
-import { getUrl } from '../../../na-utils';
+import { getUrl } from '../../../na-utils/na-utils';
 import { TEST_ROLE } from '../../../../core/initializer/acl.initializer';
 import { Permission, UserResponse } from '../../../../core/user/user.domain';
 import { BaseMockService } from '../base-mock.service';
@@ -24,6 +24,6 @@ export class CurrentUserMock extends BaseMockService {
         roleTest,
       ],
     };
-    this.Mock.mock(getUrl('user'), 'get', fakeUser);
+    this.Mock.mock(getUrl('users/me'), 'get', fakeUser);
   }
 }

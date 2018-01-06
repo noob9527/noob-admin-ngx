@@ -30,13 +30,10 @@ export class UserService {
   }
 
   retrieve() {
-    return this.http.get<UserResponse>('/user', {
-      params: {
-        current: 'true',
-      },
-    }).subscribe(res => {
-      this.onUpdateSuccess(new User(res));
-    });
+    return this.http.get<UserResponse>('/users/me')
+      .subscribe(res => {
+        this.onUpdateSuccess(new User(res));
+      });
   }
 
   private onUpdateSuccess(user: User) {

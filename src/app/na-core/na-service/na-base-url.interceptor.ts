@@ -1,4 +1,4 @@
-import { getUrl } from '../na-utils';
+import { getUrl } from '../na-utils/na-utils';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';

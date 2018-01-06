@@ -1,9 +1,8 @@
 import { NaNotice, NaNoticeType } from '../na-core/na-widget/na-notice-center/na-notice-center.domain';
 import { NoticeService } from '../core/notice/notice.service';
 import { NaAclService } from '../na-core/na-service/na-acl/na-acl.service';
-import { UserService } from '../core/user/user.service';
+import { UserService } from '../core/user/current-user.service';
 import { NaMenuService } from '../na-core/na-widget/na-sidebar/na-menu.service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import menuItems from './pages.menu';
 
