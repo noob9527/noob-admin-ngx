@@ -1,25 +1,31 @@
 @import '~assets/styles/index.less';
 
-.logo {
-  text-align: center;
-  height: 60px;
-  line-height: 60px;
-  cursor: pointer;
-  margin: 28px 0;
-  transition: @transition-ease-out;
+:host {
+  display: block;
   overflow: hidden;
+  height: 100%;
 
-  img {
-    width: 60px;
+  .logo {
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    margin: 28px 0;
     transition: @transition-ease-out;
-  }
+    overflow: hidden;
 
-  span {
-    vertical-align: text-bottom;
-    font-size: 16px;
-    text-transform: uppercase;
-    display: inline-block;
-    color: @text-color-secondary-dark;
+    img {
+      width: 60px;
+      transition: @transition-ease-out;
+    }
+
+    span {
+      vertical-align: text-bottom;
+      font-size: 16px;
+      text-transform: uppercase;
+      display: inline-block;
+      color: @text-color-secondary-dark;
+    }
   }
 }
 
