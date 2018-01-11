@@ -51,7 +51,7 @@ describe('Service: NaBreadcrumb', () => {
           },
         ],
       };
-      const res = service.generateBreadcurmbs(root);
+      const res = service.generateBreadcrumbs(root);
       expect(res).toEqual([
         { label: 'level1', params: undefined, url: '/level1' },
         { label: 'level1to1', params: undefined, url: '/level1/level1to1' },
@@ -81,7 +81,7 @@ describe('Service: NaBreadcrumb', () => {
           },
         ],
       };
-      const res = service.generateBreadcurmbs(root);
+      const res = service.generateBreadcrumbs(root);
       expect(res).toEqual([
         { label: 'level1to1', params: undefined, url: '/level1/level1to1' },
       ]);
@@ -110,7 +110,7 @@ describe('Service: NaBreadcrumb', () => {
           },
         ],
       };
-      const res = service.generateBreadcurmbs(root);
+      const res = service.generateBreadcrumbs(root);
       expect(res).toEqual([
         { label: 'level1', params: undefined, url: '/level1' },
       ]);
@@ -145,7 +145,7 @@ describe('Service: NaBreadcrumb', () => {
           },
         ],
       };
-      const res = service.generateBreadcurmbs(root);
+      const res = service.generateBreadcrumbs(root);
       expect(res).toEqual([
         { label: 'level1', params: { foo: 'foo' }, url: '/level1' },
         { label: 'level1to1', params: undefined, url: '/level1/level1to1' },

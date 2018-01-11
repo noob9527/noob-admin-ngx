@@ -18,10 +18,10 @@ export class NaBreadcrumbService {
   ) { }
 
   onInit() {
-    this.breadcrumbs = new BehaviorSubject(this.generateBreadcurmbs(this.activatedRoute.root));
+    this.breadcrumbs = new BehaviorSubject(this.generateBreadcrumbs(this.activatedRoute.root));
     this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .map(event => this.generateBreadcurmbs(this.activatedRoute.root))
+      .map(() => this.generateBreadcrumbs(this.activatedRoute.root))
       .subscribe(this.breadcrumbs);
   }
 
@@ -37,7 +37,7 @@ export class NaBreadcrumbService {
    * 根据当前路由信息生成面包屑导航
    * @param route
    */
-  generateBreadcurmbs(route: SimpleRouteForTest): Breadcrumb[] {
+  generateBreadcrumbs(route: SimpleRouteForTest): Breadcrumb[] {
     const breadcrumbs: Breadcrumb[] = [...this.prefixBreadcrumbs];
     let url = '';
     let currentRoute = getValidChild(route);

@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'level1',
     component: Level1Component,
     data: {
-      breadcrumb: 'Level1',
+      breadcrumb: { label: 'asdf' },
     },
   },
   {
@@ -51,4 +51,5 @@ const routes: Routes = [
     Level2to2Component,
   ]
 })
-export class LevelModule { }
+export class LevelModule {
+}
