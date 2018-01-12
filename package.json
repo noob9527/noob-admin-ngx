@@ -34,6 +34,7 @@
     "ng-zorro-antd": "^0.6.7",
     "ng2-charts": "^1.6.0",
     "ng2-file-upload": "^1.3.0",
+    "ng2-img-cropper": "^0.9.0",
     "ngx-permissions": "^2.1.1",
     "ngx-progressbar": "^2.0.8",
     "rxjs": "^5.5.5",

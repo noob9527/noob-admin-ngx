@@ -68,6 +68,11 @@ const menuItems: MenuItemMeta[] = [
         title: 'Upload',
         order: 0,
       },
+      {
+        path: 'cropper',
+        title: 'Cropper',
+        order: 100,
+      },
     ]
   },
   {

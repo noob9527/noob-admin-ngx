@@ -3,6 +3,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
 import { UploadModule } from './upload/upload.module';
+import { CropperComponent } from './cropper/cropper.component';
+import { CropperModule } from './cropper/cropper.module';
 
 const routes: Routes = [
   {
@@ -14,7 +16,14 @@ const routes: Routes = [
     path: 'upload',
     component: UploadComponent,
     data: {
-      breadcrumb: 'upload',
+      breadcrumb: 'Upload',
+    }
+  },
+  {
+    path: 'cropper',
+    component: CropperComponent,
+    data: {
+      breadcrumb: 'Cropper',
     }
   },
 ];
@@ -24,6 +33,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     UploadModule,
+    CropperModule,
   ],
   declarations: []
 })

@@ -1,0 +1,39 @@
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzMd]="6">
+    <nz-card>
+      <ng-template #body>
+        <h3 class="text-md">Select an image file</h3>
+        <button nz-button class="file-upload">
+          <input id="file1" accept type="file" (change)="fileChange($event)"/>
+          <i class="anticon anticon-upload"></i><span>Upload a image</span>
+        </button>
+        <h3 class="text-md">Crop type</h3>
+        <nz-radio-group [(ngModel)]="cropperSettings.rounded">
+          <label nz-radio-button [nzValue]="false"><span>Square</span></label>
+          <label nz-radio-button [nzValue]="true"><span>Circle</span></label>
+        </nz-radio-group>
+        <div *ngIf="data1.image">
+          <h3 class="text-md">Cropped image</h3>
+          <img
+            class="cropped-image"
+            [class.rounded-circle]="cropperSettings.rounded"
+            [width]="cropperSettings.croppedWidth"
+            [height]="cropperSettings.croppedHeight"
+            [src]="data1.image"
+          >
+        </div>
+      </ng-template>
+    </nz-card>
+  </div>
+  <div nz-col [nzMd]="18">
+    <nz-card>
+      <ng-template #body>
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col>
+            <img-cropper #cropper [image]="data1" [settings]="cropperSettings" (onCrop)="cropped($event)"></img-cropper>
+          </div>
+        </div>
+      </ng-template>
+    </nz-card>
+  </div>
+</div>
