@@ -58,6 +58,19 @@ const menuItems: MenuItemMeta[] = [
     ],
   },
   {
+    path: 'demo',
+    title: 'Demo',
+    icon: 'anticon anticon-laptop',
+    order: 200,
+    children: [
+      {
+        path: 'upload',
+        title: 'Upload',
+        order: 0,
+      },
+    ]
+  },
+  {
     path: 'acl',
     title: 'Acl',
     icon: 'fa fa-lock',

@@ -1,0 +1,61 @@
+.file-upload {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  [type=file] {
+    cursor: pointer;
+    display: block;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+  }
+  &:focus > span,
+  &:active > span {
+    position: initial !important;
+  }
+}
+
+button.file-upload {
+  display: block !important;
+  margin-top: 8px !important;
+  width: 100%;
+}
+
+// placeholder
+@placeholder-margin-vertical: 15px;
+@placeholder-padding: 20px;
+@placeholder-border: #ddd;
+@placeholder-background: #fafafa;
+@placeholder-color: #444;
+@placeholder-large-padding-vertical: 80px;
+
+// Placeholder container
+.box-placeholder {
+  margin-bottom: @placeholder-margin-vertical;
+  padding: @placeholder-padding;
+  border: 1px dashed @placeholder-border;
+  background: @placeholder-background;
+  color: @placeholder-color;
+}
+
+// Remove margin from the last-child
+.box-placeholder > :last-child {
+  margin-bottom: 0;
+}
+
+// Variant
+.box-placeholder-lg {
+  padding-top: @placeholder-large-padding-vertical;
+  padding-bottom: @placeholder-large-padding-vertical;
+}
+
+.bg-grey-lighter {
+  background-color: #e9e9e9 !important;
+}
+
+

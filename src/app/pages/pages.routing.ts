@@ -32,6 +32,13 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'demo',
+        loadChildren: './demo/demo.module#DemoModule',
+        data: {
+          breadcrumb: { label: 'Demo' },
+        },
+      },
+      {
         path: 'acl',
         loadChildren: './acl/acl.module#AclModule',
         data: {
