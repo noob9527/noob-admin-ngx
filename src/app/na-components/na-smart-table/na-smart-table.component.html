@@ -1,0 +1,110 @@
+<nz-table
+  #nzTable
+  [nzAjaxData]="_rows"
+  [nzShowSizeChanger]="true"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [(nzPageSize)]="naPageSize"
+  (nzPageIndexChange)="_handlePageIndexChange($event)"
+  (nzPageSizeChange)="_handlePageSizeChange($event)"
+>
+  <thead nz-thead>
+  <tr>
+    <th nz-th *ngFor="let col of _columns">
+      <span>{{col.label}}</span>
+      <ng-container *ngIf="col.searcher">
+        <ng-container [ngSwitch]="col.searcher.type">
+          <ng-container *ngSwitchCase="'text'">
+            <nz-dropdown [nzTrigger]="'click'" [nzClickHide]="false">
+              <i [ngClass]="col.searcher.icon" nz-dropdown></i>
+              <div nz-dropdown-custom class="na-table-dropdown-search">
+                <nz-input [nzPlaceHolder]="col.searcher.placeholder"
+                          [(ngModel)]="col.searcher.value"
+                ></nz-input>
+                <button nz-button [nzType]="'primary'" (click)="_handleSearch()">Search</button>
+                <button nz-button (click)="_clearColumnSearcher(col.searcher)">Reset</button>
+              </div>
+            </nz-dropdown>
+          </ng-container>
+          <ng-container *ngSwitchCase="'checkbox'">
+            <nz-dropdown [nzTrigger]="'click'" [nzClickHide]="false">
+              <i [ngClass]="col.searcher.icon" nz-dropdown></i>
+              <ul nz-menu>
+                <li nz-menu-item *ngFor="let opt of col.searcher.options">
+                  <label nz-checkbox [(ngModel)]="opt.checked">
+                    <span>{{opt.label}}</span>
+                  </label>
+                </li>
+              </ul>
+              <div nz-table-filter>
+                <span nz-table-filter-confirm (click)="_handleSearch()">Search</span>
+                <span nz-table-filter-clear (click)="_clearColumnSearcher(col.searcher)">Reset</span>
+              </div>
+            </nz-dropdown>
+          </ng-container>
+        </ng-container>
+
+      </ng-container>
+    </th>
+  </tr>
+  </thead>
+  <tbody nz-tbody>
+  <tr nz-tbody-tr *ngFor="let data of nzTable.data; let rowIndex=index">
+    <td nz-td *ngFor="let cell of data">
+      <ng-container [ngSwitch]="cell.type">
+        <!-- value column -->
+        <ng-container *ngSwitchCase="'value'">
+          {{cell.value}}
+        </ng-container>
+        <!-- action column -->
+        <ng-container *ngSwitchCase="'action'">
+          <ng-container *ngFor="let action of cell.actions; let actionLast=last">
+            <!-- callback -->
+            <a *ngIf="action.callback"
+               (click)="action.callback()"
+            >{{action.label}}</a>
+            <!-- routerLink -->
+            <a *ngIf="action.routerLink"
+               [routerLink]="data | naSafeCallable : action.routerLink : action.routerLink"
+            >{{action.label}}</a>
+
+            <!-- handle array -->
+            <ng-container *ngIf="action.length">
+              <nz-dropdown>
+                <!-- callback -->
+                <a *ngIf="action[0].callback"
+                   class="ant-dropdown-link"
+                   nz-dropdown
+                   (click)="action[0].callback(data.originalData, rowIndex, action[0])"
+                >{{action[0].label}}<i class="anticon anticon-down"></i></a>
+                <!-- routerLink -->
+                <a *ngIf="action[0].routerLink"
+                   class="ant-dropdown-link"
+                   nz-dropdown
+                   [routerLink]="data | naSafeCallable : action[0].routerLink : action[0].routerLink"
+                >{{action[0].label}}<i class="anticon anticon-down"></i></a>
+
+                <ul nz-menu>
+                  <li *ngFor="let action of action"
+                      nz-menu-item
+                  >
+                    <!-- callback -->
+                    <a *ngIf="action.callback"
+                       (click)="action.callback(data.originalData, rowIndex, action)"
+                    >{{action.label}}</a>
+                    <!-- routerLink -->
+                    <a *ngIf="action.routerLink"
+                       [routerLink]="data | naSafeCallable : action.routerLink : action.routerLink"
+                    >{{action.label}}</a>
+                  </li>
+                </ul>
+              </nz-dropdown>
+            </ng-container>
+            <span *ngIf="!actionLast" nz-table-divider></span>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
