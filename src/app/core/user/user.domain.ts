@@ -10,7 +10,7 @@ export interface UserResponse {
   age: number;
   account: string;
   avatar?: string;
-  roles: Role[];
+  roles: Maybe<Role[]>;
 }
 
 export class User implements NaUser, UserResponse {
@@ -19,12 +19,12 @@ export class User implements NaUser, UserResponse {
   age: number;
   account: string;
   avatar?: string;
-  roles: Role[];
+  roles: Maybe<Role[]>;
   isRoot: boolean;
   [index: string]: any;
 
-  constructor(meta: UserResponse) {
-    Object.assign(this, meta);
+  constructor(dto?: any) {
+    Object.assign(this, dto);
   }
 
   get naAccount(): string {
@@ -36,6 +36,7 @@ export class User implements NaUser, UserResponse {
   }
 
   get naPermissions(): string[] {
+    if (!Array.isArray(this.roles)) return [];
     return this.roles
       .map(e => e.permissions)
       .reduce((acc, curr) => acc.concat(curr), [])

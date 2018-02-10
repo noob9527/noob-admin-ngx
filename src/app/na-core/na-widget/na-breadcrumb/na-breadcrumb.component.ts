@@ -8,17 +8,17 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
 @Component({
   selector: 'na-breadcrumb',
   template: `
-  <nz-breadcrumb>
-    <nz-breadcrumb-item
-      *ngFor="let item of breadcrumbs">
-      <a *ngIf="!isAbstract(item)"
-        [routerLink]="[item.url, item.params]"
-      >
-        <span>{{item.label}}</span>
-      </a>
-      <span *ngIf="isAbstract(item)">{{item.label}}</span>
-    </nz-breadcrumb-item>
-  </nz-breadcrumb>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item
+        *ngFor="let item of breadcrumbs">
+        <a *ngIf="!isAbstract(item)"
+           [routerLink]="item.params ? [item.url, item.params] : item.url"
+        >
+          <span>{{item.label}}</span>
+        </a>
+        <span *ngIf="isAbstract(item)">{{item.label}}</span>
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
   `,
 })
 export class NaBreadcrumbComponent implements OnInit {
