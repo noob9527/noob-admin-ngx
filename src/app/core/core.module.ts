@@ -5,7 +5,8 @@ import { NgModule } from '@angular/core';
 import { NaCoreModule } from '../na-core/na-core.module';
 import { aclInitializer } from './initializer/acl.initializer';
 import { UserModule } from './user/user.module';
-import { ResourcesModule } from "./resource/resources.module";
+import { ResourcesModule } from './resource/resources.module';
+import { userInitializer } from './initializer/user.initializer';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ResourcesModule } from "./resource/resources.module";
   declarations: [],
   providers: [
     aclInitializer,
+    userInitializer,
   ],
 })
 export class CoreModule { }

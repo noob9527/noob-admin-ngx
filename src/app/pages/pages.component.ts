@@ -21,15 +21,11 @@ export class PagesComponent implements OnInit {
    * I do know it's not elegant
    * but I've not found a better way yet
    * @param naMenuService
-   * @param userService
-   * @param naAclService
    * @param noticeService
    */
   constructor(
     private naMenuService: NaMenuService,
     private noticeService: NoticeService,
-    userService: CurrentUserService,
-    naAclService: NaAclService,
   ) {
   }
 

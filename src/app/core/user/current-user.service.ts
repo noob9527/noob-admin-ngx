@@ -20,10 +20,13 @@ export class CurrentUserService {
     private authenticationService: NaAuthenticationService,
     private naUserService: NaUserService,
   ) {
+  }
+
+  init() {
     this.authenticationService.isAuthenticated
       .subscribe(res => {
         if (res) {
-          const userStr = storage.getItem(USER_KEY);
+          const userStr = this.storage.getItem(USER_KEY);
           if (userStr) {
             const userMeta: UserResponse = JSON.parse(userStr);
             this.onUpdateSuccess(new User(userMeta));
