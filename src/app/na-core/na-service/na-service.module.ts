@@ -7,6 +7,7 @@ import { NaLoggerProvider } from './na-logger.provider';
 import { NaStorageProvider } from './na-storage.provider';
 import { NaStoreService } from './na-store.service';
 import { NaUserModule } from './na-user/na-user.module';
+import { NaScriptLoaderModule } from './na-script-loader/na-script-loader.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { NaUserModule } from './na-user/na-user.module';
     NaUserModule,
     NaAclModule,
     NaErrorHandlerModule,
+    NaScriptLoaderModule,
   ],
   declarations: [],
   providers: [
