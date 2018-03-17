@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { SmartTableModule } from './smart-table/smart-table.module';
+import { TableToolbarComponent } from './table-toolbar.component';
 
 /**
  * SharedModule includes the components, directives, and pipes that you use everywhere in your app
@@ -17,14 +19,20 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     ReactiveFormsModule,
     NgZorroAntdModule,
     NgxPermissionsModule,
-],
+    SmartTableModule,
+  ],
+  declarations: [
+    TableToolbarComponent,
+  ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NgZorroAntdModule,
     NgxPermissionsModule,
+    TableToolbarComponent,
+    SmartTableModule,
   ],
-  declarations: [],
 })
-export class SharedModule { }
+export class SharedModule {
+}
