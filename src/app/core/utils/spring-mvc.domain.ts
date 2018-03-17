@@ -1,4 +1,4 @@
-import { PageRequest, Page, Sort } from '../../na-core/na-utils/na-pagination.domain';
+import { Page, PageRequest, Sort } from '../../na-core/na-utils/na-pagination.domain';
 import { HttpParams } from '@angular/common/http';
 import { RestRequestOptions } from '../../na-core/na-utils/na-rest-request.domain';
 
@@ -65,4 +65,19 @@ export class SpringPageRequest implements PageRequest {
     }
     return params;
   }
+}
+
+export function toSpringParams(searchFields?: { [index: string]: any }) {
+  let params = new HttpParams();
+  if (!searchFields) return params;
+  Object.entries(searchFields)
+    .filter(([key, value]) => value)
+    .forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((e: any) => params = params.append(key, e));
+      } else {
+        params = params.append(key, value!);
+      }
+    });
+  return params;
 }

@@ -7,6 +7,8 @@ import { NaAuthenticationService } from '../../na-core/na-service/na-authenticat
 import { NaUserService } from '../../na-core/na-service/na-user/na-user.service';
 import { User, UserResponse } from './user.domain';
 
+const USER_KEY = 'currentUser';
+
 @Injectable()
 export class CurrentUserService {
 
@@ -15,18 +17,23 @@ export class CurrentUserService {
   constructor(
     private http: HttpClient,
     @Inject(STORAGE) private storage: Storage,
-    private authenticateionService: NaAuthenticationService,
+    private authenticationService: NaAuthenticationService,
     private naUserService: NaUserService,
   ) {
-    this.authenticateionService.isAuthenticated.subscribe(res => {
-      const userStr = storage.getItem('currentUser');
-      if (userStr) {
-        const userMeta: UserResponse = JSON.parse(userStr);
-        this.onUpdateSuccess(new User(userMeta));
-      } else {
-        this.retrieve();
-      }
-    });
+    this.authenticationService.isAuthenticated
+      .subscribe(res => {
+        if (res) {
+          const userStr = storage.getItem(USER_KEY);
+          if (userStr) {
+            const userMeta: UserResponse = JSON.parse(userStr);
+            this.onUpdateSuccess(new User(userMeta));
+          } else {
+            this.retrieve();
+          }
+        } else {
+          this.storage.removeItem(USER_KEY);
+        }
+      });
   }
 
   retrieve() {
@@ -37,7 +44,7 @@ export class CurrentUserService {
   }
 
   private onUpdateSuccess(user: User) {
-    this.storage.setItem('currentUser', JSON.stringify(user));
+    this.storage.setItem(USER_KEY, JSON.stringify(user));
     this.naUserService.setCurrentUser(user);
     this.currentUser.next(user);
   }

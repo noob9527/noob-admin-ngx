@@ -26,7 +26,7 @@ export class NaAuthenticationService {
   login(credentials: NaCredentials): Observable<boolean> {
     return this.http.post('/authenticate', credentials)
       .do((res: { token: string }) => void this.authenticateSuccess(res.token))
-      .map(_ => true);
+      .map(() => true);
   }
 
   logout() {

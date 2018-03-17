@@ -1,4 +1,5 @@
 import { NaUser } from '../../na-core/na-service/na-user/na-user.domain';
+import { AbstractRestResource } from '../../na-core/na-utils/na-rest-request.domain';
 
 export enum Gender {
   MALE = 'MALE', FEMALE = 'FEMALE'
@@ -13,7 +14,7 @@ export interface UserResponse {
   roles: Maybe<Role[]>;
 }
 
-export class User implements NaUser, UserResponse {
+export class User extends AbstractRestResource implements NaUser, UserResponse {
   id: number;
   gender: Gender;
   age: number;
@@ -22,10 +23,6 @@ export class User implements NaUser, UserResponse {
   roles: Maybe<Role[]>;
   isRoot: boolean;
   [index: string]: any;
-
-  constructor(dto?: any) {
-    Object.assign(this, dto);
-  }
 
   get naAccount(): string {
     return this.account;
