@@ -4,8 +4,8 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
   selector: 'na-description-list-item',
   template: `
     <ng-template #tpl>
-      <div class="term" *ngIf="_term || _termTpl">
-        <ng-container *ngIf="_term; else _termTpl">{{_term}}</ng-container>
+      <div class="term" *ngIf="_term != null || _termTpl">
+        <ng-container *ngIf="_term != null; else _termTpl">{{_term}}</ng-container>
       </div>
       <div class="detail">
         <ng-content></ng-content>
@@ -15,7 +15,7 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 })
 export class NaDescriptionListItemComponent implements OnInit {
 
-  _term = '';
+  _term: Maybe<string>;
   _termTpl: TemplateRef<any>;
 
   @Input()
