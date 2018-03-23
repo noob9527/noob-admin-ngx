@@ -17,6 +17,12 @@ import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
       display: flex;
       justify-content: space-between;
     }
+
+    :host ::ng-deep .ant-btn,
+    :host ::ng-deep .ant-radio-group {
+      margin-right: 8px;
+      margin-bottom: 12px;
+    }
   `]
 })
 export class TableToolbarComponent implements OnInit {
