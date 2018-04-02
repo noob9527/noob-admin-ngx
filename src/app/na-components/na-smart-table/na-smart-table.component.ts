@@ -19,6 +19,8 @@ export class NaSmartTableComponent<T> implements OnInit, OnDestroy {
   private tableRow$: Subscription;
 
   @Input()
+  naPageIndex = 1;
+  @Input()
   naPageSize = 10;
 
   _searchFields: SearchFields = {};
@@ -44,6 +46,7 @@ export class NaSmartTableComponent<T> implements OnInit, OnDestroy {
   get loading() {
     return this._loading;
   }
+
   set loading(value: boolean) {
     this._loading = value;
   }
@@ -54,6 +57,7 @@ export class NaSmartTableComponent<T> implements OnInit, OnDestroy {
   get total() {
     return this._total;
   }
+
   set total(value: number) {
     this._total = value;
   }
@@ -61,6 +65,7 @@ export class NaSmartTableComponent<T> implements OnInit, OnDestroy {
   _handlePageIndexChange(index: number) {
     this.naPageIndexChange.emit(index);
   }
+
   _handlePageSizeChange(size: number) {
     this.naPageSizeChange.emit(size);
   }

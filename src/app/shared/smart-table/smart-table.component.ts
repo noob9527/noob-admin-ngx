@@ -1,4 +1,4 @@
-import { Component, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Injector, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NaSmartTableComponent } from '../../na-components/na-smart-table/na-smart-table.component';
 import { SearchFields } from '../../na-components/na-smart-table/na-smart-table.utils';
@@ -18,16 +18,18 @@ import { Column } from '../../na-components/na-smart-table/domain/row-column';
       [data]="subject.asObservable()"
       [columns]="columns"
       [total]="_total"
-      [(searchFields)]="_searchFields"
+      [(searchFields)]="searchFields"
       (searchFieldsChange)="_handleSearch()"
       [(naPageSize)]="_pageSize"
-      (naPageIndexChange)="_fetchData($event)"
-      (naPageSizeChange)="_fetchData()"
+      [(naPageIndex)]="_pageIndex"
+      (naPageIndexChange)="retrieve()"
+      (naPageSizeChange)="retrieve(true)"
     ></na-smart-table>
   `,
 })
 export class SmartTableComponent<T extends AbstractRestResource>
-  implements OnInit {
+  implements OnInit, OnChanges {
+  @Output() searchFieldsChange: EventEmitter<SearchFields> = new EventEmitter();
 
   subject = new BehaviorSubject<T[]>([]);
 
@@ -38,11 +40,16 @@ export class SmartTableComponent<T extends AbstractRestResource>
   columns: Column<T>[];
   @Input()
   service: AbstractBaseService<T>;
+  @Input()
+  searchFields: SearchFields = {};
+
+  @Input()
+  autoFetch = true;
 
   _total = 0;
   _loading = true;
   _pageSize = 10;
-  _searchFields: SearchFields = {};
+  _pageIndex = 1;
 
   private _dataSet: T[] = [];
 
@@ -63,17 +70,35 @@ export class SmartTableComponent<T extends AbstractRestResource>
   ngOnInit() {
     if (this.service == null)
       throw new Error('service property is required');
-    this._fetchData();
+    if (this.autoFetch) {
+      this.retrieve();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.searchFields) {
+      if (!changes.searchFields.isFirstChange()) {
+        this.retrieve(true);
+      }
+    }
   }
 
   _handleSearch() {
-    this._fetchData(1, toSpringParams(this._searchFields));
+    this.searchFieldsChange.emit(this.searchFields);
+    this.retrieve();
+  }
+
+  retrieve(resetPage = false) {
+    if (resetPage) {
+      this._pageIndex = 1;
+    }
+    this._fetchData(this._pageIndex, toSpringParams(this.searchFields));
   }
 
   _fetchData(pageIndex: number = 1, params?: HttpParams) {
     this._loading = true;
     this.service.query(
-      SpringPageRequest.of(pageIndex - 1, this._pageSize),
+      SpringPageRequest.of(pageIndex, this._pageSize),
       { params },
     ).subscribe(page => {
       this._loading = false;
@@ -121,7 +146,7 @@ export class SmartTableComponent<T extends AbstractRestResource>
 
   export() {
     this.service.queryAll({
-      params: toSpringParams(this._searchFields)
+      params: toSpringParams(this.searchFields)
     }).subscribe(next => {
       this.table.export(next);
     });
