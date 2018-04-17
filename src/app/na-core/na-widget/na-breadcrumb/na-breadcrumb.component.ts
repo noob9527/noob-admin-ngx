@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Breadcrumb } from './breadcrumb.model';
 import { NaBreadcrumbService } from './na-breadcrumb.service';
@@ -23,14 +23,12 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
 })
 export class NaBreadcrumbComponent implements OnInit {
 
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: Breadcrumb[] = [];
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     private naBreadcrumbService: NaBreadcrumbService,
   ) {
-    this.breadcrumbs = [];
   }
 
   ngOnInit() {
@@ -43,6 +41,6 @@ export class NaBreadcrumbComponent implements OnInit {
 
   isAbstract(item: Breadcrumb) {
     return item.abstract
-      || item === this.breadcrumbs[this.breadcrumbs.length - 1]
+      || item === this.breadcrumbs[this.breadcrumbs.length - 1];
   }
 }

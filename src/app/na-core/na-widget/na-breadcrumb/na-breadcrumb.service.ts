@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET, Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/Rx';
 
 import { Breadcrumb, BreadcrumbMeta, SimpleRouteForTest } from './breadcrumb.model';
 
@@ -15,7 +15,8 @@ export class NaBreadcrumbService {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) {
+  }
 
   onInit() {
     this.breadcrumbs = new BehaviorSubject(this.generateBreadcrumbs(this.activatedRoute.root));
@@ -38,7 +39,7 @@ export class NaBreadcrumbService {
    * @param route
    */
   generateBreadcrumbs(route: SimpleRouteForTest): Breadcrumb[] {
-    const breadcrumbs: Breadcrumb[] = [...this.prefixBreadcrumbs];
+    const breadcrumbs: Breadcrumb[] = [];
     let url = '';
     let currentRoute = getValidChild(route);
     while (currentRoute && currentRoute.snapshot) {
@@ -46,21 +47,24 @@ export class NaBreadcrumbService {
         .map(segment => segment.path)
         .join('/');
       if (routeUrl) url += `/${routeUrl}`;
-      if (!currentRoute.snapshot.data || !currentRoute.snapshot.data[ROUTE_DATA_BREADCRUMB]) {
+      if (!currentRoute.snapshot.data || currentRoute.snapshot.data[ROUTE_DATA_BREADCRUMB] == null) {
         currentRoute = getValidChild(currentRoute);
         continue;
       }
+      const breadcrumb = metaToBreadcrumb(
+        currentRoute.snapshot.data[ROUTE_DATA_BREADCRUMB],
+        url,
+        currentRoute.snapshot.params,
+      );
+      // 如果路由配置 data { breadcrumb: false } 则返回空数组
+      if (!breadcrumb) return [];
       addItemDistinct(
         breadcrumbs,
-        metaToBreadcrumb(
-          currentRoute.snapshot.data[ROUTE_DATA_BREADCRUMB],
-          url,
-          currentRoute.snapshot.params,
-        ),
+        breadcrumb
       );
       currentRoute = getValidChild(currentRoute);
     }
-    return breadcrumbs;
+    return [...this.prefixBreadcrumbs, ...breadcrumbs];
   }
 
 }
@@ -77,15 +81,17 @@ function addItemDistinct(arr: Breadcrumb[], item: Breadcrumb) {
 
 /**
  * 将面包屑元信息转化为面包屑对象
+ * 如果 meta 为false值则返回空
  * @param meta
  * @param url
  * @param params
  */
 function metaToBreadcrumb(
-  meta: BreadcrumbMeta | string,
+  meta: BreadcrumbMeta | string | false,
   url: string,
   params?: Params,
-): Breadcrumb {
+): Maybe<Breadcrumb> {
+  if (typeof meta === 'boolean' && !meta) return null;
   const param = typeof meta === 'string'
     ? { label: meta }
     : meta;
@@ -96,7 +102,7 @@ function metaToBreadcrumb(
   };
 }
 
-function getValidChild(route: SimpleRouteForTest): SimpleRouteForTest|undefined {
+function getValidChild(route: SimpleRouteForTest): SimpleRouteForTest | undefined {
   return route
     && route.children
     && route.children.find(e => e.outlet === PRIMARY_OUTLET);
