@@ -10,7 +10,7 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([]),
+    RouterModule,
     NgZorroAntdModule,
   ],
   declarations: [
@@ -23,4 +23,5 @@ import { NaBreadcrumbService } from './na-breadcrumb.service';
     NaBreadcrumbService,
   ],
 })
-export class NaBreadcrumbModule { }
+export class NaBreadcrumbModule {
+}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NaExcelService } from './na-excel.service';
 import { NaExcelImportComponent } from './na-excel-import.component';
 import { CommonModule } from '@angular/common';
@@ -18,9 +18,14 @@ import { NaExcelExportComponent } from './na-excel-export.component';
     NaExcelImportComponent,
     NaExcelExportComponent,
   ],
-  providers: [
-    NaExcelService,
-  ]
 })
 export class NaExcelModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NaExcelModule,
+      providers: [
+        NaExcelService,
+      ],
+    };
+  }
 }
