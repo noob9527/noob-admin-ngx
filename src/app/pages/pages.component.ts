@@ -1,10 +1,9 @@
 import { NaNotice, NaNoticeType } from '../na-core/na-widget/na-notice-center/na-notice-center.domain';
 import { NoticeService } from '../core/notice/notice.service';
-import { NaAclService } from '../na-core/na-service/na-acl/na-acl.service';
-import { CurrentUserService } from '../core/user/current-user.service';
 import { NaMenuService } from '../na-core/na-widget/na-sidebar/na-menu.service';
 import { Component, OnInit } from '@angular/core';
 import menuItems from './pages.menu';
+import { NaSidebarService } from '../na-core/na-widget/na-sidebar/na-sidebar.service';
 
 @Component({
   selector: 'app-pages',
@@ -13,7 +12,8 @@ import menuItems from './pages.menu';
 })
 export class PagesComponent implements OnInit {
 
-  isCollapsed = false;
+  _isCollapsed = false;
+
   NaNoticeType = NaNoticeType;
 
   /**
@@ -25,6 +25,7 @@ export class PagesComponent implements OnInit {
    */
   constructor(
     private naMenuService: NaMenuService,
+    private naSidebarService: NaSidebarService,
     private noticeService: NoticeService,
   ) {
   }
@@ -32,6 +33,15 @@ export class PagesComponent implements OnInit {
   ngOnInit() {
     this.naMenuService.updateMenu(menuItems);
     this.noticeService.fetchNoticeCount();
+    // this.noticeService.fetchNoticeCount();
+    this.naSidebarService.$isCollapsed
+      .subscribe(next => {
+        this._isCollapsed = next;
+      });
+  }
+
+  _handleCollapsedChange(currentValue: boolean) {
+    this.naSidebarService.setCollapsed(currentValue);
   }
 
   handleNoticePopupVisibleChange(isVisible: boolean) {

@@ -9,7 +9,7 @@ import { NaUserCenterModule } from './na-user-center/na-user-center.module';
 
 @NgModule({
   imports: [
-    NaSidebarModule,
+    NaSidebarModule.forRoot(),
     NaContentTopModule,
     NaBreadcrumbModule,
     NaPageTopModule,

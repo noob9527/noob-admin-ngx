@@ -1,9 +1,13 @@
 <nz-layout>
-  <nz-sider [nzWidth]="240" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <na-sidebar [isCollapsed]="isCollapsed"></na-sidebar>
+  <nz-sider [nzWidth]="240" nzCollapsible
+            [nzCollapsed]="_isCollapsed"
+            (nzCollapsedChange)="_handleCollapsedChange($event)"
+            [nzTrigger]="null"
+  >
+    <na-sidebar></na-sidebar>
   </nz-sider>
   <nz-layout>
-    <na-page-top id="page-top" [(isCollapsed)]="isCollapsed">
+    <na-page-top id="page-top">
       <na-notice-center
         (onPopupVisibleChange)="handleNoticePopupVisibleChange($event)"
       >
@@ -24,12 +28,10 @@
     </na-page-top>
     <nz-content id="page-content">
       <na-content-top></na-content-top>
-      <div id="main"
-           [style.position]="'relative'"
-      >
+      <div id="main">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer>Noob-Admin ©2017</nz-footer>
+    <nz-footer id="page-footer">Noob-Admin ©2017</nz-footer>
   </nz-layout>
 </nz-layout>

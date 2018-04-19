@@ -1,12 +1,13 @@
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { NaMenuService } from './na-menu.service';
 import { NaSidebarMenuItemComponent } from './na-sidebar-menu-item/na-sidebar-menu-item.component';
 import { NaSidebarComponent } from './na-sidebar.component';
+import { NaSidebarService } from './na-sidebar.service';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { NaSidebarComponent } from './na-sidebar.component';
     CommonModule,
     NgZorroAntdModule,
     NgxPermissionsModule,
-    RouterModule.forChild([]),
+    RouterModule,
   ],
   declarations: [
     NaSidebarComponent,
@@ -23,8 +24,15 @@ import { NaSidebarComponent } from './na-sidebar.component';
   exports: [
     NaSidebarComponent,
   ],
-  providers: [
-    NaMenuService,
-  ],
 })
-export class NaSidebarModule { }
+export class NaSidebarModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NaSidebarModule,
+      providers: [
+        NaMenuService,
+        NaSidebarService,
+      ],
+    };
+  }
+}

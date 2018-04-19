@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
 import { MenuItem } from './menu-item.model';
 import { NaMenuService } from './na-menu.service';
+import { NaSidebarService } from './na-sidebar.service';
 
 @Component({
   selector: 'na-sidebar',
@@ -19,7 +20,7 @@ import { NaMenuService } from './na-menu.service';
       >
         <na-sidebar-menu-item
           [menuItem]="item"
-          [isCollapsed]="isCollapsed"
+          [isCollapsed]="_isCollapsed"
         >
         </na-sidebar-menu-item>
       </ng-template>
@@ -29,21 +30,27 @@ import { NaMenuService } from './na-menu.service';
 })
 export class NaSidebarComponent implements OnInit {
 
-  @Input() isCollapsed: boolean;
+  _isCollapsed: boolean;
   menuItems: MenuItem[];
   appName = environment.appName;
 
   constructor(
-    private naMenuService: NaMenuService
-  ) { }
+    private naMenuService: NaMenuService,
+    private naSidebarService: NaSidebarService,
+  ) {
+  }
 
   ngOnInit() {
+    this.naSidebarService.$isCollapsed
+      .subscribe(next => {
+        this._isCollapsed = next;
+      });
     this.naMenuService.menuItems
       .subscribe((menuItems: MenuItem[]) => this.menuItems = menuItems);
   }
 
   get menuMode() {
-    return this.isCollapsed ? 'vertical' : 'inline';
+    return this._isCollapsed ? 'vertical' : 'inline';
   }
 
 }

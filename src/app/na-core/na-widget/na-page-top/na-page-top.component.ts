@@ -1,8 +1,5 @@
-import { NaUser } from '../../na-service/na-user/na-user.domain';
-import { NaUserService } from '../../na-service/na-user/na-user.service';
-import { Router } from '@angular/router';
-import { NaAuthenticationService } from '../../na-service/na-authentication/na-authentication.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NaSidebarService } from '../na-sidebar/na-sidebar.service';
 
 @Component({
   selector: 'na-page-top',
@@ -10,9 +7,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     <nz-header>
       <i
         class="anticon trigger"
-        [class.anticon-menu-fold]="!isCollapsed"
-        [class.anticon-menu-unfold]="isCollapsed"
-        (click)="toggleCollapsed()">
+        [class.anticon-menu-unfold]="_isCollapsed"
+        [class.anticon-menu-fold]="!_isCollapsed"
+        (click)="_toggleCollapsed()">
       </i>
       <div class="tool-bar">
         <ng-content></ng-content>
@@ -23,17 +20,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class NaPageTopComponent implements OnInit {
 
-  @Input() isCollapsed = false;
-  @Output() isCollapsedChange = new EventEmitter<boolean>();
+  _isCollapsed = false;
 
-  toggleCollapsed() {
-    this.isCollapsed = !this.isCollapsed;
-    this.isCollapsedChange.emit(this.isCollapsed);
+  constructor(
+    private naSidebarService: NaSidebarService,
+  ) {
   }
-
-  constructor() { }
 
   ngOnInit() {
+    this.naSidebarService.$isCollapsed
+      .subscribe(next => {
+        this._isCollapsed = next;
+      });
   }
 
+  _toggleCollapsed() {
+    this.naSidebarService.setCollapsed(!this._isCollapsed);
+  }
 }
